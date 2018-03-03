@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as _ from 'lodash';
 import {FormControl} from "@angular/forms";
 import {routeAnimation} from "../../../route.animation";

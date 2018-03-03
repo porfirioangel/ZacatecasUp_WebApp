@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as _ from 'lodash';
 import {fadeInAnimation} from "../../route.animation";
 

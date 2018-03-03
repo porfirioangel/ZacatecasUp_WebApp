@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Upload} from '../clases/upload';
-import {UUID} from 'angular2-uuid';
 
 @Injectable()
 export class UploadService {

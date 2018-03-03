@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { routeAnimation } from "../../../route.animation";
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {routeAnimation} from "../../../route.animation";
+
 declare let ResizeSensor;
 
 @Component({

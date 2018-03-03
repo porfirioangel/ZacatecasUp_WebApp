@@ -1,7 +1,12 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {
-  lineChartInterpolatedDemoDataGenerator, discreteBarDemoDataGenerator,
-  lineChartDemoDataGenerator, serverLoadDemoData, recentSalesDemoDataGenerator, pieChartDemoData, trafficSourcesDemoData
+  discreteBarDemoDataGenerator,
+  lineChartDemoDataGenerator,
+  lineChartInterpolatedDemoDataGenerator,
+  pieChartDemoData,
+  recentSalesDemoDataGenerator,
+  serverLoadDemoData,
+  trafficSourcesDemoData
 } from "../data/widgetDemoData.data";
 import {fadeInAnimation} from "../../route.animation";
 

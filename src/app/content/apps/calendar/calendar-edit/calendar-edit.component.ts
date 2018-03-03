@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material";
 import {CalendarEvent} from 'angular-calendar';
 import * as moment from 'moment';

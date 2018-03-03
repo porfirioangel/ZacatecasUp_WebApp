@@ -59,10 +59,10 @@ import {ScrollbarModule} from '../core/scrollbar/scrollbar.module';
 import {LocalesComponent} from './locales/locales.component';
 import {APP_DATE_FORMATS, AppDateAdapter} from '../format/AppDateAdapter'
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material'
-
 /// SERVICES ///
 import {SidenavCounterService} from '../services/sidenav-counter.service';
 import {AuthService} from '../services/auth.service';
+import {BaseService} from '../services/base.service';
 import {UploadService} from '../services/upload.service';
 import {LocalesService} from '../services/locales.service';
 import {SearchViajesPipe} from './pipes/search-viajes.pipe';
@@ -147,6 +147,7 @@ import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.comp
     D3ChartService,
     MailService,
     AuthService,
+    BaseService,
     UploadService,
     SidenavCounterService,
     LocalesService,

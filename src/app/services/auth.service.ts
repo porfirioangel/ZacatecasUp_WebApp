@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 import {User} from '../clases/user';
-import {environment} from '../../environments/environment';
 
 
 @Injectable()
@@ -12,7 +10,7 @@ export class AuthService {
 
   constructor(private router: Router) {
 
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
 
   }
 

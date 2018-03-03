@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {ModalUserComponent} from '../modal-user/modal-user.component';
 import {User} from '../../../clases/user';
@@ -14,9 +13,9 @@ export class ToolbarUserButtonComponent implements OnInit {
   isOpen: boolean;
   dialogRefUserModal: MatDialogRef<ModalUserComponent>;
   user: User = {
-    displayName: 'Usuario',
+    displayName: 'Santiago García Cabral',
     email: 'email@gmail.com',
-    photoURL: 'assets/img/common/no-image.gif'
+    photoURL: 'https://i.pinimg.com/avatars/porfirioads_1497321963_280.jpg'
   };
 
   constructor(public dialog: MatDialog) {

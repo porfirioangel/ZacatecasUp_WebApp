@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {fadeInAnimation} from "../../../route.animation";
-import { widget1Data, widget4Data, widget3Data, widget2Data } from "../../data/widgetDemoData.data";
-import { lineChartWidgetData } from "../../data/lineChartWidget.data";
-import { sourceOverviewWidgetData } from "../../data/source-overview-widget.data";
+import {widget1Data, widget2Data, widget3Data, widget4Data} from "../../data/widgetDemoData.data";
+import {lineChartWidgetData} from "../../data/lineChartWidget.data";
+import {sourceOverviewWidgetData} from "../../data/source-overview-widget.data";
 
 @Component({
   selector: 'ms-dashboard-v1',

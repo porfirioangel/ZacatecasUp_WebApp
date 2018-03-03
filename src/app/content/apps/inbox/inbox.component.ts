@@ -1,6 +1,12 @@
 import {
-  Component, OnInit, OnDestroy, ViewChildren, QueryList, ElementRef,
-  Renderer, AfterViewChecked
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer,
+  ViewChildren
 } from '@angular/core';
 import {Mail} from "./mail.model";
 import {fadeInAnimation} from "../../../route.animation";

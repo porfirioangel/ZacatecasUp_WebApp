@@ -70,7 +70,9 @@ export class LocalesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rows = this.localService.getList();
+    this.localService.getList().then((locales) => {
+      this.rows = locales;
+    })
   }
 
   selectRow(row) {

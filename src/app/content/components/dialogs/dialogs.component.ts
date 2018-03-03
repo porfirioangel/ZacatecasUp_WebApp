@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {routeAnimation} from '../../../route.animation';
 import * as _ from 'lodash';
-import {MatDialogRef, MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'ms-dialogs',

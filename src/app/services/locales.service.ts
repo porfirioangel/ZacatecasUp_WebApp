@@ -1,17 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {Local} from '../clases/local';
-import {environment} from '../../environments/environment';
+import {BaseService} from './base.service';
 
 @Injectable()
 export class LocalesService {
 
-
-  dbPath = environment.api + '/local';
   locales: Local[];
 
-
-  constructor() {
+  constructor(private baseService: BaseService) {
 
     this.locales = [{
       id: 'manuelharo12423',
@@ -25,24 +21,41 @@ export class LocalesService {
   }
 
 
-  getList(): Local[] {
-    return this.locales;
+  getList(): Promise<Local[]> {
+    return this.baseService.find().then((locales: any) => {
+      return this.locales;
+    }).catch((error) => {
+      return error;
+    });
   }
 
   addItem(item: Local) {
     this.locales.push(item);
     console.log('addItem', item);
-    return true;
+    this.baseService.create(item).then((local: any) => {
+      return local;
+    }).catch((error) => {
+      return error;
+    });
   }
 
   updateItem(id: string, item: Local) {
     console.log('updateItem', id, item);
-    return true;
+    this.baseService.create(item).then((local: any) => {
+      return local;
+    }).catch((error) => {
+      return error;
+    });
   }
 
   deleteItem(id: string) {
     console.log('deleteItem', id);
     this.locales.pop();
+    this.baseService.create(id).then((local: any) => {
+      return local;
+    }).catch((error) => {
+      return error;
+    });
     return true;
   }
 

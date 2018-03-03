@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { routeAnimation } from "../../../route.animation";
+import {Component, OnInit} from '@angular/core';
+import {routeAnimation} from "../../../route.animation";
 
 @Component({
   selector: 'ms-level5',

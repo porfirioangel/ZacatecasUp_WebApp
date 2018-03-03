@@ -23,7 +23,7 @@ export class SidenavCounterService {
         });
       });
 
-    const locElements  = this.localesService.getList();
-    this.localesNav['badge'] = locElements.length;
+    this.localesNav['badge'] = '10';
+
   }
 }

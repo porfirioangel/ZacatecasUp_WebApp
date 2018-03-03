@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as _ from 'lodash';
-import { routeAnimation } from "../../../route.animation";
+import {routeAnimation} from "../../../route.animation";
 
 @Component({
   selector: 'ms-lists',

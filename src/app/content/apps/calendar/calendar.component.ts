@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent
-} from 'angular-calendar';
+import {CalendarEvent, CalendarEventTimesChangedEvent} from 'angular-calendar';
 import {MatDialog, MatSnackBar} from "@angular/material";
 import {CalendarEditComponent} from "./calendar-edit/calendar-edit.component";
 import {Subject} from "rxjs";

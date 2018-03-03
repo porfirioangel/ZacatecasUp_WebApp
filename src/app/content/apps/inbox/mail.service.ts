@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Mail} from "./mail.model";
 import {BehaviorSubject, Observable} from "rxjs";
 import {demoMails} from "./mails.demo";

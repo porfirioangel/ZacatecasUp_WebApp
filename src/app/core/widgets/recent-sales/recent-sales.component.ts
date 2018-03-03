@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Inject} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {D3, D3ChartService} from '../../charts/nvD3/nvD3.service';
 import {recentCustomersDemoValues} from '../../../content/data/widgetDemoData.data';
 import * as moment from 'moment';

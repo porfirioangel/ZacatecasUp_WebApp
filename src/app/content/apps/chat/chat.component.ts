@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {chatDemoData} from "./chat.demo";
 import * as _ from 'lodash';
 import * as moment from 'moment';

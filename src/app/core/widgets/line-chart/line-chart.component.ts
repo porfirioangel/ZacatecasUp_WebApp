@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Inject, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {D3, D3ChartService} from "../../charts/nvD3/nvD3.service";
 import {lineChartDemoValues} from "../../../content/data/widgetDemoData.data";
 

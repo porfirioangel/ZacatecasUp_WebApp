@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from "@angular/material";
+import {Component, OnInit} from '@angular/core';
+import {MatSnackBar} from "@angular/material";
 import * as _ from 'lodash';
-import { routeAnimation } from "../../../route.animation";
+import {routeAnimation} from "../../../route.animation";
 
 @Component({
   selector: 'ms-snack-bar',
