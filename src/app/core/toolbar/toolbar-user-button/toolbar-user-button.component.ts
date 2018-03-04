@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {ModalUserComponent} from '../modal-user/modal-user.component';
 import {User} from '../../../clases/user';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'ms-toolbar-user-button',
@@ -18,7 +19,7 @@ export class ToolbarUserButtonComponent implements OnInit {
     photoURL: 'https://i.pinimg.com/avatars/porfirioads_1497321963_280.jpg'
   };
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private authService: AuthService) {
 
   }
 
@@ -44,5 +45,6 @@ export class ToolbarUserButtonComponent implements OnInit {
   }
 
   logout() {
+    this.authService.logout();
   }
 }

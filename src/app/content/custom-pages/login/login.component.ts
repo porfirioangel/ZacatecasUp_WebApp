@@ -25,13 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('Login')
-    this.authService.signUpWithEmail(this.email, this.password).then(() => {
-
-    }).catch(_error => {
-
-    });
-
+    this.authService.signUpWithEmail(this.email, this.password)
 
   }
 

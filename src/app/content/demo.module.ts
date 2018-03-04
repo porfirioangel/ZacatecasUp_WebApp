@@ -59,6 +59,7 @@ import {ScrollbarModule} from '../core/scrollbar/scrollbar.module';
 import {LocalesComponent} from './locales/locales.component';
 import {APP_DATE_FORMATS, AppDateAdapter} from '../format/AppDateAdapter'
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material'
+import {HttpClientModule} from '@angular/common/http';
 /// SERVICES ///
 import {SidenavCounterService} from '../services/sidenav-counter.service';
 import {AuthService} from '../services/auth.service';
@@ -71,6 +72,7 @@ import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.comp
 
 @NgModule({
   imports: [
+    HttpClientModule,
     CommonModule,
     BrowserModule,
     FormsModule,
