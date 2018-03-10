@@ -14,7 +14,7 @@ export class ToolbarUserButtonComponent implements OnInit {
   isOpen: boolean;
   dialogRefUserModal: MatDialogRef<ModalUserComponent>;
   user: User = {
-    displayName: 'Santiago García Cabral',
+    nombre: 'Santiago García Cabral',
     email: 'email@gmail.com',
     photoURL: 'https://i.pinimg.com/avatars/porfirioads_1497321963_280.jpg'
   };

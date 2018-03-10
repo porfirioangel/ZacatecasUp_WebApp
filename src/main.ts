@@ -8,4 +8,6 @@ if (environment.production) {
 }
 
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+// platformBrowserDynamic().bootstrapModule(AppModule);
+const platform = platformBrowserDynamic();
+platform.bootstrapModule(AppModule);

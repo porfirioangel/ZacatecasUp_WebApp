@@ -23,10 +23,7 @@ export class ModalUserComponent implements OnInit {
 
   ngOnInit() {
     const userLog = this.authService.getUser();
-    this.user = {
-      displayName: userLog.displayName,
-      photoURL: userLog.photoURL
-    };
+    this.user = {};
   }
 
 

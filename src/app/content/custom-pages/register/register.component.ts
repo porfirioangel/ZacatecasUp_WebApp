@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {fadeInAnimation} from "../../../route.animation";
-import {Router} from "@angular/router";
+import {fadeInAnimation} from '../../../route.animation';
+import {Router} from '@angular/router';
+import { User } from '../../../clases/user';
 
 @Component({
   selector: 'ms-register',
@@ -13,6 +14,8 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
 
+  user: User
+  first: string;
   name: string;
   email: string;
   password: string;

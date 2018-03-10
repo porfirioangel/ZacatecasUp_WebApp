@@ -68,6 +68,7 @@ import {UploadService} from '../services/upload.service';
 import {LocalesService} from '../services/locales.service';
 import {SearchPipe} from './pipes/search.pipe';
 import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.component';
+import {MatInputModule} from '@angular/material';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.comp
     HighlightModule,
     SortablejsModule,
     CalendarModule.forRoot(),
-    ScrollbarModule
+    ScrollbarModule,
+    MatInputModule
   ],
   entryComponents: [
     DemoDialog,

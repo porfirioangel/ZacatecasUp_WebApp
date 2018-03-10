@@ -5,8 +5,8 @@
 
 export const environment = {
   production: true,
-  host: 'http://192.168.0.14:8000',
-  api: 'http://192.168.0.14:8000/api/',
+  host: 'http://18.221.199.5/ZacatecasUp/ZacatecasUp_REST/public',
+  api: 'http://18.221.199.5/ZacatecasUp/ZacatecasUp_REST/public/api/',
   googleApi: 'xxxxxxxxxxx'
 
 };

@@ -14,11 +14,12 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Sexo" required>
-            <mat-option [value]="H">Hombre</mat-option>
-            <mat-option [value]="M">Mujer</mat-option>
-           </mat-select>
+            <mat-select [(ngModel)]="sexo" name="sexo"> 
+                <mat-option value="H">Hombre</mat-option>
+                <mat-option value="M">Mujer</mat-option>
+              </mat-select>
         </mat-form-field>
+        
         <mat-form-field>
           <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="email">
         </mat-form-field>
@@ -29,6 +30,11 @@
           <input matInput placeholder="Password (Confirmar)" type="password" name="password-confirm" required [(ngModel)]="passwordConfirm">
         </mat-form-field>
        
+        {{user}}
+        <div>
+            <label class="mat-raised-button" for="files" style="display: table;width: 100%;">Cambiar Imagen..</label>
+            <input id="files" style="visibility:hidden;" type="file" (change)="uploadImgProfile($event)" accept="image/*">
+          </div>
         <button color="primary" mat-raised-button [disabled]="!form.valid">Crear Cuenta</button>
         <p class="note">Tienes una cuenta?<br/> <a [routerLink]="['/login']">Login</a></p>
       </div>

@@ -13,6 +13,24 @@ export class AuthService {
 
 
   constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
+
+    const url = environment.api + 'check_login';
+
+
+      this.http.get(url, {})
+          .toPromise()
+          .then((response: any) => {
+              console.log('POST request', response);
+              if (response.token) {
+                this.user = response;
+                this.router.navigate(['/']);
+              }else{
+                this.router.navigate(['/login']);
+              }
+          })
+          .catch((error) => {
+              console.log('POST request error', error);
+          });
   }
 
   getUser(): User {
@@ -73,8 +91,17 @@ export class AuthService {
   }
 
   logout() {
-    console.log('logout')
-    this.router.navigate(['/login']);
+    const url = environment.api + 'logout';
+
+    this.http.get(url, {})
+    .toPromise()
+    .then((response: any) => {
+        console.log('Logout', response);
+        this.router.navigate(['/login']);
+    })
+    .catch((error) => {
+        console.log('POST request error', error);
+    });
   }
 
 }
