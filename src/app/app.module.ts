@@ -32,6 +32,7 @@ import {ScrollbarModule} from './core/scrollbar/scrollbar.module';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor(private dateAdapter: DateAdapter<Date>) {
     dateAdapter.setLocale('es-MX'); // DD/MM/YYYY

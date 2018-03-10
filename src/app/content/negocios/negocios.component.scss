@@ -29,3 +29,27 @@
   cursor: pointer;
 }
 
+
+.search {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .4s cubic-bezier(.35, 0, .25, 1);
+  margin-top: 0px;
+
+  &.search-open {
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+.search-button {
+  border-radius: 0;
+  padding: 0;
+  min-width: 50px;
+  max-width: 50px;
+}
+

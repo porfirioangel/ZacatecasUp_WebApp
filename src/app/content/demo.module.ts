@@ -56,7 +56,7 @@ import {AgmCoreModule} from '@agm/core';
 import {HighlightModule} from '../core/highlightjs/highlight.module';
 import {QuillModule} from 'ngx-quill';
 import {ScrollbarModule} from '../core/scrollbar/scrollbar.module';
-import {LocalesComponent} from './locales/locales.component';
+import {NegociosComponent} from './negocios/negocios.component';
 import {APP_DATE_FORMATS, AppDateAdapter} from '../format/AppDateAdapter'
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material'
 import {HttpClientModule} from '@angular/common/http';
@@ -66,7 +66,7 @@ import {AuthService} from '../services/auth.service';
 import {BaseService} from '../services/base.service';
 import {UploadService} from '../services/upload.service';
 import {LocalesService} from '../services/locales.service';
-import {SearchViajesPipe} from './pipes/search-viajes.pipe';
+import {SearchPipe} from './pipes/search.pipe';
 import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.component';
 
 
@@ -141,8 +141,8 @@ import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.comp
     CalendarEditComponent,
     ChatComponent,
     AutocompleteComponent,
-    LocalesComponent,
-    SearchViajesPipe,
+    NegociosComponent,
+    SearchPipe,
     EliminateDialogComponent
   ],
   providers: [

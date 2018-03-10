@@ -17,7 +17,7 @@ export class SidenavCounterService {
       .subscribe((items: SidenavItem[]) => {
         items.forEach((side, index) => {
 
-          if (side['route'] === '/locales') {
+          if (side['route'] === '/negocios') {
             this.localesNav = side;
           }
         });

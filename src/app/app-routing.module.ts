@@ -28,7 +28,7 @@ import {InboxComponent} from './content/apps/inbox/inbox.component';
 import {CalendarComponent} from './content/apps/calendar/calendar.component';
 import {ChatComponent} from './content/apps/chat/chat.component';
 import {AutocompleteComponent} from './content/components/autocomplete/autocomplete.component';
-import {LocalesComponent} from './content/locales/locales.component'
+import {NegociosComponent} from './content/negocios/negocios.component'
 
 
 const routes: Routes = [
@@ -54,8 +54,8 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'locales',
-        component: LocalesComponent,
+        path: 'negocios',
+        component: NegociosComponent,
         pathMatch: 'full'
       },
 
