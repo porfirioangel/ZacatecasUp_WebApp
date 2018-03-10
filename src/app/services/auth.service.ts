@@ -12,7 +12,7 @@ export class AuthService {
   headers: HttpHeaders;
 
 
-  constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar,) {
+  constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
   }
 
   getUser(): User {

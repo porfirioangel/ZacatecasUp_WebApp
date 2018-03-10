@@ -12,7 +12,7 @@ export class SearchPipe implements PipeTransform {
     if (!searchText) {
       return items;
     }
-    console.log('---', searchText);
+
     searchText = searchText.toLowerCase();
 
     return items.filter(it => {

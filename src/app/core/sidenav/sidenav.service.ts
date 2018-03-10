@@ -20,8 +20,8 @@ export class SidenavService {
     const dashboard = menu.addItem('Dashboard', 'dashboard', '/', 1);
 
     menu.addItem('Negocios', 'directions_bus', '/negocios', 2, '40', '#4CAF50');
-    menu.addItem('Tags', 'directions_bus', '/', 3, '500', '#7986CC');
-    menu.addItem('Eventos', 'recent_actors', '/', 4, '38', '#afa674');
+    menu.addItem('Eventos', 'recent_actors', '/', 3, '38', '#afa674');
+    menu.addItem('Promociones', 'directions_bus', '/', 4, '66', '#7986CC');
   }
 
   private _currentlyOpen: SidenavItem[] = [];
