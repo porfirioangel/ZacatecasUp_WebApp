@@ -14,6 +14,8 @@
   
   <div fxFlex class="mat-elevation-z2">
 
+  {{host}}
+    {{rows | json}}
     <table class="table" [class.table-hover]="tableHover" [class.table-striped]="tableStriped" [class.table-condensed]="tableCondensed" [class.table-bordered]="tableBordered">
       <thead>
       <tr>
@@ -25,10 +27,11 @@
       </thead>
       <tbody>
       <tr *ngFor="let row of rows | search : searchTerm">
-        <td class="avatar-cell"><img class="avatar" [src]="row.picture"></td>
-        <td>{{ row.name.first }} {{ row.name.last }}</td>
-        <td>{{ row.company }}</td>
-        <td>{{ row.email }}</td>
+        <td class="avatar-cell"><img class="avatar" [src]="host + '/' +row.url_logo"></td>
+        
+        <td>{{ row.nombre }} </td>
+        <td>{{ row.nombre }}</td>
+        <td>{{ row.nombre }}</td>
       </tr>
       </tbody>
     </table>
@@ -36,3 +39,6 @@
   </div>
 
 </div>
+
+
+<button mat-fab color="primary" class="btn-floating" (click)="openNew()">Nuevo</button>

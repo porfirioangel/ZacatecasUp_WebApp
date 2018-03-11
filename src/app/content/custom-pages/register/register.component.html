@@ -6,36 +6,33 @@
     <form #form="ngForm" (ngSubmit)="register()">
       <div class="register-content" fxLayout="column" fxLayoutAlign="start stretch">
         <mat-form-field>
-          <input matInput placeholder="Nombre Completo" type="text" name="name" required [(ngModel)]="name">
+          <input matInput placeholder="Nombre Completo" type="text" name="user.nombre" required [(ngModel)]="user.nombre">
         </mat-form-field>
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Fecha Nacimiento" required>
+          <input matInput [matDatepicker]="picker" placeholder="Fecha Nacimiento" required [(ngModel)]="user.fecha_nacimiento" name="user.fecha_nacimiento">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-            <mat-select [(ngModel)]="sexo" name="sexo"> 
+            <mat-select [(ngModel)]="user.sexo" name="user.sexo" placeholder="Sexo" required> 
                 <mat-option value="H">Hombre</mat-option>
                 <mat-option value="M">Mujer</mat-option>
               </mat-select>
         </mat-form-field>
         
         <mat-form-field>
-          <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="email">
+          <input matInput placeholder="E-Mail" type="email" name="user.email" required [(ngModel)]="user.email">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="password">
+          <input matInput placeholder="Password" type="password" name="user.password" required [(ngModel)]="user.password">
         </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Password (Confirmar)" type="password" name="password-confirm" required [(ngModel)]="passwordConfirm">
-        </mat-form-field>
-       
-        {{user}}
+        {{form.valid }}
+        {{file !== null}}
         <div>
-            <label class="mat-raised-button" for="files" style="display: table;width: 100%;">Cambiar Imagen..</label>
+            <label class="mat-raised-button" for="files" style="display: table;width: 100%;">Subir imagen de perfil</label>
             <input id="files" style="visibility:hidden;" type="file" (change)="uploadImgProfile($event)" accept="image/*">
           </div>
-        <button color="primary" mat-raised-button [disabled]="!form.valid">Crear Cuenta</button>
+        <button color="primary" mat-raised-button [disabled]="!form.valid && file !== null">Crear Cuenta</button>
         <p class="note">Tienes una cuenta?<br/> <a [routerLink]="['/login']">Login</a></p>
       </div>
     </form>

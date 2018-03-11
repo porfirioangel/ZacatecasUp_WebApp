@@ -65,10 +65,13 @@ import {SidenavCounterService} from '../services/sidenav-counter.service';
 import {AuthService} from '../services/auth.service';
 import {BaseService} from '../services/base.service';
 import {UploadService} from '../services/upload.service';
-import {LocalesService} from '../services/locales.service';
+import {NegociosService} from '../services/negocios.service';
 import {SearchPipe} from './pipes/search.pipe';
 import {EliminateDialogComponent} from './eliminate-dialog/eliminate-dialog.component';
 import {MatInputModule} from '@angular/material';
+import { ModalNegocioComponent } from './negocios/modal-negocio/modal-negocio.component';
+import { DescripcionComponent } from './negocios/modal-negocio/descripcion/descripcion.component';
+import { MapaComponent } from './negocios/modal-negocio/mapa/mapa.component';
 
 
 @NgModule({
@@ -97,7 +100,8 @@ import {MatInputModule} from '@angular/material';
     DemoDialog,
     EliminateDialogComponent,
     InboxComposeComponent,
-    CalendarEditComponent
+    CalendarEditComponent,
+    ModalNegocioComponent
   ],
   declarations: [
     DashboardV1Component,
@@ -145,7 +149,10 @@ import {MatInputModule} from '@angular/material';
     AutocompleteComponent,
     NegociosComponent,
     SearchPipe,
-    EliminateDialogComponent
+    EliminateDialogComponent,
+    ModalNegocioComponent,
+    DescripcionComponent,
+    MapaComponent
   ],
   providers: [
     D3ChartService,
@@ -154,7 +161,7 @@ import {MatInputModule} from '@angular/material';
     BaseService,
     UploadService,
     SidenavCounterService,
-    LocalesService,
+    NegociosService,
     {
       provide: DateAdapter, useClass: AppDateAdapter
     },

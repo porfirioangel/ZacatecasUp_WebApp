@@ -4,6 +4,7 @@ import {User} from '../clases/user';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {MatSnackBar} from '@angular/material';
+import { RequestOptions } from '@angular/http';
 
 @Injectable()
 export class AuthService {
@@ -23,9 +24,9 @@ export class AuthService {
               console.log('POST request', response);
               if (response.token) {
                 this.user = response;
-                this.router.navigate(['/']);
-              }else{
-                this.router.navigate(['/login']);
+                // this.router.navigate(['/']);
+              } else {
+                // this.router.navigate(['/login']);
               }
           })
           .catch((error) => {
@@ -37,18 +38,14 @@ export class AuthService {
     return this.user;
   }
   signUpWithEmail(email: string, password: string) {
-    console.log('signUpWithEmail', email, password);
+    console.log('signUpWithEmail', email);
     const body = new HttpParams()
       .set('email', email)
       .set('password', password);
 
-    this.http.post(environment.api + 'login',
-      body.toString(),
-      {
-        headers: new HttpHeaders()
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-      }
-    ).subscribe((data) => {
+
+
+    this.http.post(environment.api + 'login', body).subscribe((data) => {
       console.log('data', data);
       this.router.navigate(['/']);
       return data;
