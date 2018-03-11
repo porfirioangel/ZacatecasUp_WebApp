@@ -73,9 +73,14 @@ import { ModalNegocioComponent } from './negocios/modal-negocio/modal-negocio.co
 import { DescripcionComponent } from './negocios/modal-negocio/descripcion/descripcion.component';
 import { MapaComponent } from './negocios/modal-negocio/mapa/mapa.component';
 
+/// TAGS ///
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
+    TagInputModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
     BrowserModule,

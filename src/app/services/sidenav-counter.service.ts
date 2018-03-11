@@ -23,7 +23,10 @@ export class SidenavCounterService {
         });
       });
 
-    this.negociosNav['badge'] = '10';
+
+    this.negocioService.getList().then((negocios) => {
+        this.negociosNav['badge'] = negocios.length;
+    })
 
   }
 }

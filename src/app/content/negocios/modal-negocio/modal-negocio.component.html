@@ -1,4 +1,29 @@
-<mat-tab-group>
-  <mat-tab label="Tab 1">Content 1</mat-tab>
-  <mat-tab label="Tab 2">Content 2</mat-tab>
-</mat-tab-group>
+<div class="inbox-compose">
+  <div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">
+    <span>Nuevo Negocio</span>
+    <button matDialogClose mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content" mat-dialog-content>
+      <mat-tab-group>
+          <mat-tab label="Datos Negocio">
+              <app-ms-descripcion-negocio></app-ms-descripcion-negocio>
+          </mat-tab>
+          <mat-tab label="Ubicación">
+            <app-ms-mapa-negocio></app-ms-mapa-negocio>
+          </mat-tab>
+        </mat-tab-group>
+  </div>
+  <div mat-dialog-actions fxLayout="row">
+    <button matDialogClose mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+    <span fxFlex><!-- fill space --></span>
+
+    <button (click)="send()" class="send" mat-raised-button color="primary">
+      Guardar <mat-icon>save</mat-icon>
+    </button>
+  </div>
+
+</div>

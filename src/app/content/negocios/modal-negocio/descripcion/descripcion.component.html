@@ -1,3 +1,34 @@
 <p>
-  descripcion works!
-</p>
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Nombre Negocio">
+    </mat-form-field>
+  </p>
+
+
+  <p>
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Sitio Web">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Facebook">
+    </mat-form-field>
+  </p>
+  <p>
+      <tag-input [(ngModel)]='tags' 
+        [placeholder]="'Nueva tag'"
+        [maxItems]="7"
+        [secondaryPlaceholder]="'Tags relacionadas'">
+      </tag-input>
+  </p>
+  <p>
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Descripción Breve">
+    </mat-form-field>
+  </p>
+
+  <p class="editor">
+    <quill-editor></quill-editor>
+  </p>

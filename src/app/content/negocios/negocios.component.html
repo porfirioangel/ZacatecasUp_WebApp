@@ -7,31 +7,28 @@
     </mat-card>
   </div>
 
-  <hr>
-
+<br>
+<br>
 
 <div fxLayout="column" fxLayout.gt-md="row">
   
   <div fxFlex class="mat-elevation-z2">
-
-  {{host}}
-    {{rows | json}}
-    <table class="table" [class.table-hover]="tableHover" [class.table-striped]="tableStriped" [class.table-condensed]="tableCondensed" [class.table-bordered]="tableBordered">
+    <table class="table" [class.table-hover]="true" [class.table-striped]="true" [class.table-condensed]="true" [class.table-bordered]="true">
       <thead>
       <tr>
         <th></th>
         <th>Nombre</th>
-        <th>Categoría</th>
+        <th>Tipo</th>
         <th>Fin Subscripción</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let row of rows | search : searchTerm">
-        <td class="avatar-cell"><img class="avatar" [src]="host + '/' +row.url_logo"></td>
+        <td class="avatar-cell"><img class="avatar" [src]="'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mcdonald%27s_logo.svg/220px-Mcdonald%27s_logo.svg.png'"></td>
         
         <td>{{ row.nombre }} </td>
-        <td>{{ row.nombre }}</td>
-        <td>{{ row.nombre }}</td>
+        <td>{{ row.tipo_suscripcion }}</td>
+        <td>{{ row.fecha_fin_suscripcion | date:'dd/MM/yyyy'}}</td>
       </tr>
       </tbody>
     </table>
