@@ -76,6 +76,9 @@ import { MapaComponent } from './negocios/modal-negocio/mapa/mapa.component';
 /// TAGS ///
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatosComponent } from './negocios/modal-negocio/datos/datos.component';
+
+
 
 @NgModule({
   imports: [
@@ -157,7 +160,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EliminateDialogComponent,
     ModalNegocioComponent,
     DescripcionComponent,
-    MapaComponent
+    MapaComponent,
+    DatosComponent
   ],
   providers: [
     D3ChartService,
