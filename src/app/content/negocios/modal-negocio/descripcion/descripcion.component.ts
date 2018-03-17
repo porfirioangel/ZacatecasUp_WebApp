@@ -11,6 +11,7 @@ export class DescripcionComponent implements OnInit {
     {id: 1, llave: 'telefono', valor: '4941355886' },
     {id: 1, llave: 'hola', valor: '4941355886' }
   ]
+  caracteristicas: any[];
 
   constructor() { }
 
