@@ -1,31 +1,41 @@
 
 
-<p>
-    <mat-slide-toggle [(ngModel)]="tipo">
-        Lista / Descripción
-       </mat-slide-toggle>
-</p>
+        <div fxLayout="column" fxLayout.gt-md="row" center>
+            <mat-slide-toggle [(ngModel)]="tipo">
+                Lista / Descripción
+            </mat-slide-toggle>
+        </div>
 
-<p>
-{{tipo}}
-</p>
+        <div fxLayout="column" fxLayout.gt-md="row" *ngIf="tipo">
+            <mat-form-field class="input-container">
+            <input matInput #message maxlength="100" placeholder="Descripción">
+            <mat-hint align="start"><strong>Describa las características de su negocio</strong> </mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
+        </mat-form-field>
+        </div>
 
 
-<p  *ngIf="tipo">
-  <mat-form-field class="input-container">
-      <input matInput #message maxlength="256" placeholder="Descripción">
-      <mat-hint align="start"><strong>Describa las características de su negocio</strong> </mat-hint>
-      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-  </mat-form-field>
-</p>
+        <div fxLayout="column" fxLayout.gt-md="row" *ngIf="!tipo">
+                <mat-input-container fxFlex>
+                    <input matInput
+                        placeholder="Título">
+                </mat-input-container>
+                <mat-input-container fxFlex>
+                <input matInput
+                    placeholder="Contenido">
+                </mat-input-container>
+                <button mat-button>Agregar</button>
+                
+        </div>
 
-<p  *ngIf="!tipo">
-    <mat-list>
-        <mat-list-item>Teléfono: 494513578</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Comedor UAZ </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Porfiririto</mat-list-item>
-      </mat-list>
-</p>
+        <div fxLayout="column" fxLayout.gt-md="row" *ngIf="!tipo">
+         <mat-list fxFlex>
+                <mat-list-item>Teléfono: 494513578</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Comedor UAZ </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Porfiririto</mat-list-item>
+            </mat-list>
+        </div>
+
 

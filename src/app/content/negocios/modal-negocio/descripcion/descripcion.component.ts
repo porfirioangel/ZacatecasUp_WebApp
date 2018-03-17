@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DescripcionComponent implements OnInit {
 
+  listaDescripcion = [
+    {id: 1, llave: 'telefono', valor: '4941355886' },
+    {id: 1, llave: 'hola', valor: '4941355886' }
+  ]
 
   constructor() { }
 
