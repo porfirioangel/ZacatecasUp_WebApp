@@ -1,3 +1,4 @@
+import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 import {Headers, Http} from '@angular/http';
 import {Inject, Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -10,104 +11,48 @@ export class BaseService {
   modelName: string;
   model: any;
 
-  constructor(@Inject(Http) http: Http) {
+  constructor(@Inject(Http) http: Http, @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
     this.http = http;
     this.api = environment.api
   }
 
-  mapListToModelList(list: Array<Object>) {
-    list.forEach((item, index) => {
-      list[index] = this.mapModel(item);
+  get(url: string, params: any): Promise<any> {
+    const urlReq = environment.api + url;
+
+    params.token = this.storage.get('token');
+    console.log('>>GET<<<', url, params);
+
+    return new Promise<any>((resolve, reject) => {
+        this.http.get(urlReq, params)
+            .toPromise()
+            .then((response) => {
+                console.log('GET request', response.url);
+                resolve (response);
+            })
+            .catch((error) => {
+              reject (error);
+            });
     });
+ }
 
-    return list;
-  }
 
-  mapModel(model: any) {
-    return this.model(model);
-  }
+  post(url: string, params: any): Promise<any> {
+    const urlReq = environment.api + 'detalles_negocio';
 
-  findById(id: number, populate: Array<string> = null) {
-    return new Promise((resolve, reject) => {
-      let url = this.api + '/' + this.modelName + '/' + id;
+    params.token = this.storage.get('token');
 
-      if (populate) {
-        url = url + '?populate=' + populate.join(', ');
-      }
+    console.log('>>POST<<<', url, params);
 
-      console.log('URL', url);
-
-      this.http.get(url)
-        .map(res => res.json())
-        .subscribe(res => {
-          if (res.error) {
-            reject(res.error);
-          } else {
-            resolve(this.mapModel(res));
-          }
-        });
-    });
-  }
-
-  find(populate: Array<string> = null) {
-    return new Promise((resolve, reject) => {
-      let url = this.api + '/' + this.modelName;
-
-      if (populate) {
-        url = url + '?populate=' + populate.join(', ');
-      }
-
-      this.http.get(url)
-        .map(res => res.json())
-        .subscribe(res => {
-          if (res.error) {
-            reject(res.error);
-          } else {
-            resolve(this.mapListToModelList(res));
-          }
-        });
-    });
-  }
-
-  upsert(model: any) {
-    return new Promise((resolve, reject) => {
-      const url = this.api + '/api/' + this.modelName;
-
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Accept', 'application/json');
-
-      this.http.put(url, JSON.stringify(model), {headers: headers})
-        .map(res => res.json())
-        .subscribe(res => {
-          console.log(res);
-          if (res.error) {
-            reject(res.error);
-          } else {
-            resolve(this.mapModel(res));
-          }
-        });
-    });
-  }
-
-  create(model: any) {
-    return new Promise((resolve, reject) => {
-      const url = this.api + '/' + this.modelName;
-
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Accept', 'application/json');
-
-      this.http.post(url, JSON.stringify(model), {headers: headers})
-        .map(res => res.json())
-        .subscribe(res => {
-          console.log(res);
-          if (res.error) {
-            reject(res.error);
-          } else {
-            resolve(this.mapModel(res));
-          }
-        });
+    return new Promise<any>((resolve, reject) => {
+        this.http.post(urlReq, params)
+            .toPromise()
+            .then((response) => {
+                console.log('POST request', response.url);
+                resolve(response.json());
+            })
+            .catch((error) => {
+                reject(error.json());
+            });
     });
   }
 }

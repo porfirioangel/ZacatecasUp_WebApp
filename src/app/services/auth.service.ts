@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../clases/user';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {MatSnackBar} from '@angular/material';
 import { RequestOptions } from '@angular/http';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Injectable()
 export class AuthService {
@@ -13,25 +14,19 @@ export class AuthService {
   headers: HttpHeaders;
 
 
-  constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
+  constructor(private router: Router,
+    private http: HttpClient,
+    private snackBar: MatSnackBar,
+    @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+      const token = this.storage.get('token')
+      console.log('TOKEN', token);
 
-    const url = environment.api + 'check_login';
+      if (token) {
+        this.router.navigate(['/']);
+      } else {
+        this.router.navigate(['/login']);
+      }
 
-
-      this.http.get(url, {})
-          .toPromise()
-          .then((response: any) => {
-              console.log('POST request', response);
-              if (response.token) {
-                this.user = response;
-                this.router.navigate(['/']);
-              } else {
-                this.router.navigate(['/login']);
-              }
-          })
-          .catch((error) => {
-              console.log('POST request error', error);
-          });
   }
 
   getUser(): User {
@@ -44,12 +39,15 @@ export class AuthService {
       .set('password', password);
 
 
-      const options = {
-        withCredentials : true
+      const params = {
+        email: email,
+        password: password
       }
 
-    this.http.post(environment.api + 'login', body, options).subscribe((data) => {
+    this.http.post(environment.api + 'login', params).subscribe((data) => {
       console.log('data', data);
+      this.storage.set('token', data.token);
+
       this.router.navigate(['/']);
       return data;
     }, (error) => {
@@ -97,6 +95,7 @@ export class AuthService {
     .toPromise()
     .then((response: any) => {
         console.log('Logout', response);
+        this.storage.set('token', null);
         this.router.navigate(['/login']);
     })
     .catch((error) => {

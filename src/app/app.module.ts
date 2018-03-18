@@ -11,6 +11,7 @@ import {CoreModule} from './core/core.module';
 import {DemoModule} from './content/demo.module';
 import {SortablejsModule} from 'angular-sortablejs';
 import {ScrollbarModule} from './core/scrollbar/scrollbar.module';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {ScrollbarModule} from './core/scrollbar/scrollbar.module';
     DemoModule,
     SortablejsModule,
     ScrollbarModule,
+    StorageServiceModule
   ],
   providers: [
     MatIconRegistry,

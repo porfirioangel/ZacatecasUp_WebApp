@@ -1,4 +1,3 @@
-import { environment } from './../../environments/environment';
 import { Negocio } from './../clases/negocio';
 import {Injectable} from '@angular/core';
 import {BaseService} from './base.service';
@@ -13,29 +12,19 @@ export class NegociosService {
     this.negocios = [];
   }
 
-
   getList(): Promise<Negocio[]> {
-    const url = environment.api + 'catalogo_negocios';
-
-        const params = {
-            params: {}
-        };
-
-        return new Promise<Negocio[]>((resolve, reject) => {
-            this.http.get(url, params)
-                .toPromise()
-                .then((response) => {
-                    console.log('GET request', response.url);
-                    resolve(response.json() as Negocio[]);
-                })
-                .catch((error) => {
-                    reject(error.json());
-                });
-        });
+    return new Promise<Negocio[]>((resolve, reject) => {
+      this.baseService.get('catalogo_negocios', {})
+          .then((response) => {
+              resolve(response.json() as Negocio[]);
+          })
+          .catch((error) => {
+              reject(error.json());
+          });
+  });
   }
 
   getDetalleNegocio(id_negocio: number): Promise<Negocio> {
-    const url = environment.api + 'detalles_negocio';
 
     console.log('id_negocio', id_negocio);
 
@@ -46,10 +35,8 @@ export class NegociosService {
     };
 
     return new Promise<Negocio>((resolve, reject) => {
-        this.http.get(url, params)
-            .toPromise()
+        this.baseService.get('detalles_negocio', params)
             .then((response) => {
-                console.log('GET request', response.url);
                 resolve(response.json() as Negocio);
             })
             .catch((error) => {
@@ -63,31 +50,15 @@ export class NegociosService {
   addItem(item: Negocio) {
     this.negocios.push(item);
     console.log('addItem', item);
-    this.baseService.create(item).then((local: any) => {
-      return local;
-    }).catch((error) => {
-      return error;
-    });
   }
 
   updateItem(id: string, item: Negocio) {
     console.log('updateItem', id, item);
-    this.baseService.create(item).then((local: any) => {
-      return local;
-    }).catch((error) => {
-      return error;
-    });
   }
 
   deleteItem(id: string) {
     console.log('deleteItem', id);
     this.negocios.pop();
-    this.baseService.create(id).then((local: any) => {
-      return local;
-    }).catch((error) => {
-      return error;
-    });
-    return true;
   }
 
 }
