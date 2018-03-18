@@ -1,5 +1,7 @@
 import { MatDialogRef } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import {Inject} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-ms-modal-negocio',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalNegocioComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalNegocioComponent>) { }
+  constructor(public dialogRef: MatDialogRef<ModalNegocioComponent>, @Inject(MAT_DIALOG_DATA) public data: any ) {
+    console.log('data', data);
+   }
 
   ngOnInit() {
   }
