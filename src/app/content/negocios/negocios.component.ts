@@ -60,8 +60,14 @@ export class NegociosComponent implements OnInit {
   openNew() {
     this.dialogRef = this.dialog.open(ModalNegocioComponent, {
       disableClose: false,
+    });
+  }
+
+  openEdit(id) {
+    this.dialogRef = this.dialog.open(ModalNegocioComponent, {
+      disableClose: false,
       data  : {
-        param: 'hola'
+        id: id
       }
     });
   }

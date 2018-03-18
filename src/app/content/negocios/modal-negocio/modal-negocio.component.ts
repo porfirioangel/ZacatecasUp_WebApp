@@ -1,3 +1,5 @@
+import { Negocio } from './../../../clases/negocio';
+import { NegociosService } from './../../../services/negocios.service';
 import { MatDialogRef } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import {Inject} from '@angular/core';
@@ -10,11 +12,28 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 })
 export class ModalNegocioComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalNegocioComponent>, @Inject(MAT_DIALOG_DATA) public data: any ) {
-    console.log('data', data);
+  isNew: boolean;
+  negocio: Negocio;
+  constructor(public dialogRef: MatDialogRef<ModalNegocioComponent>,
+              private negociosService: NegociosService,
+              @Inject(MAT_DIALOG_DATA) public data: any ) {
+
+                console.log('ID', data);
+                if (data) {
+                  this.isNew = false;
+                  this.getNegocio(data.id)
+                } else {
+                  this.isNew = false;
+                }
    }
 
   ngOnInit() {
+  }
+
+  getNegocio(id) {
+    this.negociosService.getDetalleNegocio(id).then(data => {
+      console.log('NEGOCIO', data);
+    })
   }
 
 }

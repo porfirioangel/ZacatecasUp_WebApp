@@ -17,7 +17,6 @@ export class NegociosService {
   getList(): Promise<Negocio[]> {
     const url = environment.api + 'catalogo_negocios';
 
-
         const params = {
             params: {}
         };
@@ -33,8 +32,33 @@ export class NegociosService {
                     reject(error.json());
                 });
         });
-
   }
+
+  getDetalleNegocio(id_negocio: number): Promise<Negocio> {
+    const url = environment.api + 'detalles_negocio';
+
+    console.log('id_negocio', id_negocio);
+
+    const params = {
+        params: {
+            id_negocio: id_negocio
+        }
+    };
+
+    return new Promise<Negocio>((resolve, reject) => {
+        this.http.get(url, params)
+            .toPromise()
+            .then((response) => {
+                console.log('GET request', response.url);
+                resolve(response.json() as Negocio);
+            })
+            .catch((error) => {
+                reject(error.json());
+            });
+    });
+}
+
+
 
   addItem(item: Negocio) {
     this.negocios.push(item);
