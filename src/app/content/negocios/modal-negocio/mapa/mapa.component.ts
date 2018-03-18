@@ -1,3 +1,5 @@
+import { Input } from '@angular/core';
+import { Negocio } from './../../../../clases/negocio';
 import { log } from 'util';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AgmMap } from '@agm/core';
@@ -14,12 +16,15 @@ export class MapaComponent implements OnInit,  AfterViewInit {
   lng = -102.5966308;
   @ViewChild('agmMap') agmMap;
 
+  @Input('item') item: Negocio;
+  @Input('isNew') isNew: boolean;
+
   constructor() {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
-    this.agmMap.triggerResize();
+    // this.lat = Number(this.item.latitud)
+    // this.lng = Number(this.item.longitud)
   }
 
   ngAfterViewInit() {

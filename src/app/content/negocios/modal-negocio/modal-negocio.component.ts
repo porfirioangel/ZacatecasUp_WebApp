@@ -13,7 +13,7 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 export class ModalNegocioComponent implements OnInit {
 
   isNew: boolean;
-  negocio: Negocio;
+  negocio: Negocio = new Negocio;
   constructor(public dialogRef: MatDialogRef<ModalNegocioComponent>,
               private negociosService: NegociosService,
               @Inject(MAT_DIALOG_DATA) public data: any ) {
@@ -33,6 +33,7 @@ export class ModalNegocioComponent implements OnInit {
   getNegocio(id) {
     this.negociosService.getDetalleNegocio(id).then(data => {
       console.log('NEGOCIO', data);
+      this.negocio = data;
     })
   }
 

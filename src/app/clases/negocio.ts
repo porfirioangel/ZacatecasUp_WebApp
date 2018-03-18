@@ -1,9 +1,18 @@
 export class Negocio {
   id?: number;
-  nombre?: string;
-  url_logo?: string;
-  tipo_suscripcion?: string;
-  fecha_fin_suscripcion?: any;
+  nombre?: number;
+  categoria?: string;
+  logotipo?: string;
+  calificacion?: number;
+  sitio_web?: string;
+  latitud?: number;
+  longitud?: number;
+  galeria?: string[];
+  descripcion_breve?: string;
+  descripcion_completa?: any;
+  palabras_clave?: string[];
+  comentarios?: any[];
+
 
   constructor() {
   }

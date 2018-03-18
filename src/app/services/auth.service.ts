@@ -24,9 +24,9 @@ export class AuthService {
               console.log('POST request', response);
               if (response.token) {
                 this.user = response;
-                // this.router.navigate(['/']);
+                this.router.navigate(['/']);
               } else {
-                // this.router.navigate(['/login']);
+                this.router.navigate(['/login']);
               }
           })
           .catch((error) => {
@@ -44,8 +44,11 @@ export class AuthService {
       .set('password', password);
 
 
+      const options = {
+        withCredentials : true
+      }
 
-    this.http.post(environment.api + 'login', body).subscribe((data) => {
+    this.http.post(environment.api + 'login', body, options).subscribe((data) => {
       console.log('data', data);
       this.router.navigate(['/']);
       return data;

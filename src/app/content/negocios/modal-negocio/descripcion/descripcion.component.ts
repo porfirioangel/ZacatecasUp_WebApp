@@ -1,4 +1,6 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Negocio } from '../../../../clases/negocio';
 
 @Component({
   selector: 'app-ms-descripcion-negocio',
@@ -7,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DescripcionComponent implements OnInit {
 
-  listaDescripcion = [
-    {id: 1, llave: 'telefono', valor: '4941355886' },
-    {id: 1, llave: 'hola', valor: '4941355886' }
-  ]
   caracteristicas: any[];
+
+  @Input('item') item: Negocio;
+  @Input('isNew') isNew: boolean;
 
   constructor() { }
 

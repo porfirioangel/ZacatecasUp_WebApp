@@ -1,32 +1,30 @@
-<p>
-  <mat-form-field class="input-container">
-    <input matInput placeholder="Nombre Negocio">
-  </mat-form-field>
-</p>
+{{form.value |json}}
+<form [formGroup]="form">
 
+<mat-form-field class="input-container">
+      <input matInput placeholder="Nombre Negocio" [(ngModel)]="item.nombre"  formControlName="nombre" required>
+    </mat-form-field>
 
-<p>
-  <mat-form-field class="input-container">
-    <input matInput placeholder="Sitio Web">
-  </mat-form-field>
-</p>
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Sitio Web" [(ngModel)]="item.sitio_web" formControlName="sitio_web">
+    </mat-form-field>
 
-<p>
-  <mat-form-field class="input-container">
-    <input matInput placeholder="Facebook">
-  </mat-form-field>
-</p>
-<p>
-    <tag-input [(ngModel)]='tags' 
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Facebook" [(ngModel)]="item.facebook" formControlName="facebook">
+    </mat-form-field>
+
+    <tag-input
+      formControlName="palabras_clave"
+      [(ngModel)]='item.palabras_clave'
+     [modelAsStrings]="true"
       [placeholder]="'Nueva tag'"
-      [maxItems]="7"
       [secondaryPlaceholder]="'Tags relacionadas'">
     </tag-input>
-</p>
-<p>
+
     <mat-form-field class="input-container">
-        <input matInput #message maxlength="100" placeholder="Descripción Breve">
+        <input matInput #message maxlength="100" placeholder="Descripción Breve" [value]="item.descripcion_breve" formControlName="descripcion_breve"
+        required>
         <mat-hint align="start"><strong>Describa las características de su negocio</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
-        </mat-form-field>
-</p>
+    </mat-form-field>
+  </form>
