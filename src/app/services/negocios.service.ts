@@ -14,12 +14,12 @@ export class NegociosService {
 
   getList(): Promise<Negocio[]> {
     return new Promise<Negocio[]>((resolve, reject) => {
-      this.baseService.get('catalogo_negocios', {})
+      this.baseService.post('catalogo_negocios', {})
           .then((response) => {
               resolve(response.json() as Negocio[]);
           })
           .catch((error) => {
-              reject(error.json());
+              reject(error);
           });
   });
   }
@@ -35,7 +35,7 @@ export class NegociosService {
     };
 
     return new Promise<Negocio>((resolve, reject) => {
-        this.baseService.get('detalles_negocio', params)
+        this.baseService.post('detalles_negocio', params)
             .then((response) => {
                 resolve(response.json() as Negocio);
             })

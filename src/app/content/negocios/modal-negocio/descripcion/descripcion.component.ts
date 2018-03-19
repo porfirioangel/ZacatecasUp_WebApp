@@ -30,7 +30,6 @@ export class DescripcionComponent implements OnInit {
   refresh() {
     this.mostrar = false;
     setInterval(() => {
-      console.log('x');
       this.mostrar =  true;
     }, 500);
   }
@@ -38,7 +37,6 @@ export class DescripcionComponent implements OnInit {
   getKey (key: string): string {
       key = key.toLowerCase();
       key = key.replace(/á/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i').replace(/ó/g, 'o').replace(/ú/g, 'u')
-      console.log('Return', key);
     return key;
   }
 
@@ -54,7 +52,6 @@ export class DescripcionComponent implements OnInit {
 
 
   selectItem(item) {
-    console.log('Seleccionó', item);
     this.titulo = item.titulo
     if (item.tipo === 'lista') {
       this.tipo = false;
@@ -65,10 +62,8 @@ export class DescripcionComponent implements OnInit {
     }
   }
   deleteItem(item) {
-    console.log('Eliminó', item);
     const key = this.getKey(item.titulo)
     delete this.item.descripcion_completa[key];
-
     this.refresh();
   }
 
