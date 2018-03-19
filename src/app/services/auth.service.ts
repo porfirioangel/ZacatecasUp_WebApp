@@ -44,7 +44,7 @@ export class AuthService {
         password: password
       }
 
-    this.http.post(environment.api + 'login', params).subscribe((data) => {
+    this.http.post(environment.api + 'login', params).subscribe((data: any) => {
       console.log('data', data);
       this.storage.set('token', data.token);
 

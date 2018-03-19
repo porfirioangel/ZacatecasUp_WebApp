@@ -1,7 +1,9 @@
 <br><br>
+
 <div fxLayout="column" fxLayout.gt-md="row" >
     <mat-input-container fxFlex>
             <input matInput
+                [(ngModel)]='titulo'
                 placeholder="Título">
         </mat-input-container>
         <mat-slide-toggle  [(ngModel)]="tipo">
@@ -11,7 +13,7 @@
 
 <div fxLayout="column" fxLayout.gt-md="row" *ngIf="tipo" >
     <mat-form-field class="input-container">
-        <input matInput #message maxlength="100" placeholder="Descripción">
+        <input matInput #message maxlength="100" placeholder="Descripción" [(ngModel)]='descripcion'>
         <mat-hint align="start"><strong>Describa las características de su negocio</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
     </mat-form-field>
@@ -19,10 +21,10 @@
 
 <div fxLayout="column" fxLayout.gt-md="row" *ngIf="!tipo" >
     <p>
-            <tag-input 
-            [(ngModel)]='caracteristicas' 
+        <tag-input 
+            [(ngModel)]='caracteristicas'
             placeholder="Nueva característica"
-            [maxItems]="7"
+            [modelAsStrings]="true"
             [secondaryPlaceholder]="'Lista de características'">
         </tag-input>
     </p>
@@ -31,40 +33,38 @@
        
 
 <div fxLayout="column" fxLayout.gt-md="row" >
-    <button mat-button>Agregar</button>
+    <button mat-button (click)="addElement()">Agregar</button>
 </div>
 
 <mat-divider></mat-divider>
 
-<mat-list class="list mat-elevation-z1">
-    <h3 mat-subheader>Lista</h3>
-    <mat-list-item>
-        <h3 matLine>Productos</h3>
-          <p matLine>
-              <span class="subline">Hamburguesas</span>
-          </p>
-          <p matLine>
-              <span class="subline">Pizza</span>
-          </p>
-      </mat-list-item>
-    <mat-list-item>
-      <h3 matLine>Teléfono</h3>
-        <p matLine>
-            <span class="subline">4949428610</span>
-        </p>
-        <p matLine>
-            <span class="subline">4949428611</span>
-        </p>
-    </mat-list-item>
-    
+<mat-list class="list mat-elevation-z1" *ngIf="!mostrar">
+        <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+</mat-list>
+
+<mat-list class="list mat-elevation-z1" *ngIf="mostrar" center>
+    <div *ngFor="let entry of item.descripcion_completa | keys">
+        <mat-list-item *ngIf="entry.value.tipo == 'lista'">
+            <button mat-button color="primary"(click)="selectItem(item.descripcion_completa[entry.key])">Actualizar</button>
+            <button mat-button color="warn" (click)="deleteItem(item.descripcion_completa[entry.key])">Eliminar</button>
+            <h3 matLine>{{entry.value.titulo}}</h3>
+              <p matLine *ngFor="let item of entry.value.contenido">
+                  <span class="subline">{{item}}</span>
+              </p>
+          </mat-list-item>
+    </div>
+   
     <mat-divider></mat-divider>
-    <h3 mat-subheader>Descripción</h3>
-    <mat-list-item>
-      <h3 matLine>Descripción</h3>
-      <p matLine class="subline tab-content ng-star-inserted">
-        McDonald's es una cadena de restaurantes de rápida. Sus principales productos son las hamburguesas, papas fritas, los menús para el desayuno, los refrescos, batidos, los helados, los postres y, recientemente, ensaladas de fruta y otros productos exclusivos para países
-      </p>
-    </mat-list-item>
+    <div *ngFor="let entry of (item.descripcion_completa | keys)">
+        <mat-list-item *ngIf="entry.value.tipo == 'texto'">
+                <button mat-button color="primary"(click)="selectItem(item.descripcion_completa[entry.key])">Actualizar</button>
+                <button mat-button color="warn" (click)="deleteItem(item.descripcion_completa[entry.key])">Eliminar</button>                
+                    <h3 matLine>{{entry.value.titulo}}</h3>
+                    <p matLine class="subline tab-content ng-star-inserted">
+                        {{entry.value.contenido}}
+                    </p>                
+          </mat-list-item>
+    </div>
   </mat-list>
 
 

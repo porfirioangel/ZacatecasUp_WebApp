@@ -1,3 +1,4 @@
+import { KeysPipe } from './pipes/keys.pipe.';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DashboardV1Component} from './custom-pages/dashboard-v1/dashboard-v1.component';
@@ -157,6 +158,7 @@ import { DatosComponent } from './negocios/modal-negocio/datos/datos.component';
     AutocompleteComponent,
     NegociosComponent,
     SearchPipe,
+    KeysPipe,
     EliminateDialogComponent,
     ModalNegocioComponent,
     DescripcionComponent,

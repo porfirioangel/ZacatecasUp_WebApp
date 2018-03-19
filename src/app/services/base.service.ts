@@ -55,4 +55,45 @@ export class BaseService {
             });
     });
   }
+
+  put(url: string, params: any): Promise<any> {
+    const urlReq = environment.api + 'detalles_negocio';
+
+    params.token = this.storage.get('token');
+
+    console.log('>>POST<<<', url, params);
+
+    return new Promise<any>((resolve, reject) => {
+        this.http.put(urlReq, params)
+            .toPromise()
+            .then((response) => {
+                console.log('POST request', response.url);
+                resolve(response.json());
+            })
+            .catch((error) => {
+                reject(error.json());
+            });
+    });
+  }
+
+
+  delete(url: string, params: any): Promise<any> {
+    const urlReq = environment.api + 'detalles_negocio';
+
+    params.token = this.storage.get('token');
+
+    console.log('>>POST<<<', url, params);
+
+    return new Promise<any>((resolve, reject) => {
+        this.http.delete(urlReq, params)
+            .toPromise()
+            .then((response) => {
+                console.log('POST request', response.url);
+                resolve(response.json());
+            })
+            .catch((error) => {
+                reject(error.json());
+            });
+    });
+  }
 }
