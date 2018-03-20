@@ -1,3 +1,5 @@
+import { Negocio } from './../clases/negocio';
+import { Observable } from 'rxjs';
 import {Injectable} from '@angular/core';
 import {SidenavService} from '../core/sidenav/sidenav.service';
 import {SidenavItem} from '../core/sidenav/sidenav-item/sidenav-item.model';
@@ -8,6 +10,9 @@ import {NegociosService} from './negocios.service';
 export class SidenavCounterService {
 
   negociosNav: any;
+  private negocios: Observable<Negocio[]>;
+
+
   private _itemsSubscription: Subscription;
 
   constructor(private sidenavService: SidenavService,
@@ -24,9 +29,8 @@ export class SidenavCounterService {
       });
 
 
-    this.negocioService.getList().then((negocios) => {
-        this.negociosNav['badge'] = negocios.length;
-    })
+      this.negocios = this.negocioService.getList();
+
 
   }
 }

@@ -11,7 +11,6 @@
 <br>
 
 <div fxLayout="column" fxLayout.gt-md="row">
-  
   <div fxFlex class="mat-elevation-z2">
     <table class="table" [class.table-hover]="true" [class.table-striped]="true" [class.table-condensed]="true" [class.table-bordered]="true">
       <thead>
@@ -23,7 +22,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let row of rows | search : searchTerm" (click)="openEdit(row.id)">
+      <tr *ngFor="let row of todos | async | search : searchTerm" (click)="openEdit(row.id)">
         <td class="avatar-cell"><img class="avatar" [src]="'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mcdonald%27s_logo.svg/220px-Mcdonald%27s_logo.svg.png'"></td>
         <td>{{ row.nombre }} </td>
         <td>{{ row.tipo_suscripcion }}</td>

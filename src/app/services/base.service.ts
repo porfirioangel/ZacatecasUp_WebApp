@@ -37,7 +37,7 @@ export class BaseService {
 
 
   post(url: string, params: any): Promise<any> {
-    const urlReq = environment.api + 'detalles_negocio';
+    const urlReq = environment.api + url;
 
     params.token = this.storage.get('token');
 

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment.prod';
 import { ModalNegocioComponent } from './modal-negocio/modal-negocio.component';
 import {routeAnimation} from '../../route.animation';
@@ -28,6 +29,8 @@ export class NegociosComponent implements OnInit {
   isNew = true;
   rows: Negocio[];
   searchTerm: string;
+  private todos: Observable<Negocio[]>;
+
 
   dialogRef: MatDialogRef<ModalNegocioComponent>;
 
@@ -42,10 +45,7 @@ export class NegociosComponent implements OnInit {
 
 
   ngOnInit() {
-    this.service.getList().then((negocios) => {
-        this.rows = negocios
-        console.log('Rows <>', this.rows);
-    })
+    this.todos = this.service.getList(); // subscribe to entire collection
   }
 
 

@@ -1,3 +1,4 @@
+import { BaseService } from './base.service';
 import {Injectable, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {User} from '../clases/user';
@@ -17,16 +18,25 @@ export class AuthService {
   constructor(private router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar,
+    private baseService: BaseService,
     @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
-      const token = this.storage.get('token')
-      console.log('TOKEN', token);
 
-      if (token) {
-        this.router.navigate(['/']);
-      } else {
-        this.router.navigate(['/login']);
+      const params = {
+        token : this.storage.get('token'),
       }
 
+      this.baseService.post('check_login', params)
+          .then((response) => {
+            if (response.token) {
+              this.user = response;
+              this.router.navigate(['/']);
+            } else {
+              this.router.navigate(['/login']);
+            }
+          })
+          .catch((error) => {
+            this.router.navigate(['/login']);
+          });
   }
 
   getUser(): User {
@@ -89,18 +99,15 @@ export class AuthService {
   }
 
   logout() {
-    const url = environment.api + 'logout';
-
-    this.http.get(url, {})
-    .toPromise()
-    .then((response: any) => {
-        console.log('Logout', response);
-        this.storage.set('token', null);
-        this.router.navigate(['/login']);
-    })
-    .catch((error) => {
-        console.log('POST request error', error);
-    });
+      this.baseService.post('logout', {})
+          .then((response) => {
+            console.log('Logout', response);
+            this.storage.set('token', null);
+            this.router.navigate(['/login']);
+          })
+          .catch((error) => {
+            console.log('POST request error', error);
+          });
   }
 
 }

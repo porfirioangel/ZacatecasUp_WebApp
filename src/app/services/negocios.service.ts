@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Negocio } from './../clases/negocio';
 import {Injectable} from '@angular/core';
 import {BaseService} from './base.service';
@@ -6,23 +8,35 @@ import {Http} from '@angular/http';
 @Injectable()
 export class NegociosService {
 
-  negocios: Negocio[];
+    private negocioSubject = new BehaviorSubject([]);
+    private negocios: Negocio[];
 
-  constructor(private baseService: BaseService, public http: Http) {
-    this.negocios = [];
-  }
 
-  getList(): Promise<Negocio[]> {
-    return new Promise<Negocio[]>((resolve, reject) => {
-      this.baseService.post('catalogo_negocios', {})
-          .then((response) => {
-              resolve(response.json() as Negocio[]);
-          })
-          .catch((error) => {
-              reject(error);
-          });
-  });
-  }
+    getList(): Observable<Negocio[]> {
+      return this.negocioSubject.asObservable();
+    }
+
+
+    constructor(private baseService: BaseService, public http: Http) {
+        this.refresh();
+    }
+
+    refresh() {
+        setInterval(() => {
+            console.log('Refresh Negocios');
+                this.baseService.post('catalogo_negocios', {})
+                    .then((response) => {
+                        this.negocioSubject.next(response);
+                        console.log('hola', response);
+                        // return (response.json() as Negocio[]);
+                    })
+                    .catch((error) => {
+                    // return (error);
+                    });
+        }, 5000)
+    }
+
+
 
   getDetalleNegocio(id_negocio: number): Promise<Negocio> {
 
@@ -35,7 +49,7 @@ export class NegociosService {
     };
 
     return new Promise<Negocio>((resolve, reject) => {
-        this.baseService.post('detalles_negocio', params)
+        this.baseService.get('detalles_negocio', params)
             .then((response) => {
                 resolve(response.json() as Negocio);
             })
@@ -60,5 +74,4 @@ export class NegociosService {
     console.log('deleteItem', id);
     this.negocios.pop();
   }
-
 }

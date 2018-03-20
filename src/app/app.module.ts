@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+import { AgmCoreModule } from '@agm/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -27,7 +29,10 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     DemoModule,
     SortablejsModule,
     ScrollbarModule,
-    StorageServiceModule
+    StorageServiceModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleApi
+    }),
   ],
   providers: [
     MatIconRegistry,
