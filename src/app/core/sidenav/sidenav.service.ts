@@ -19,9 +19,9 @@ export class SidenavService {
 
     const dashboard = menu.addItem('Dashboard', 'dashboard', '/', 1);
 
-    menu.addItem('Negocios', 'business', '/negocios', 2, '40', '#4CAF50');
-    menu.addItem('Eventos', 'event', '/', 3, '38', '#afa674');
-    menu.addItem('Promociones', 'trending_up', '/', 4, '66', '#7986CC');
+    menu.addItem('Negocios', 'business', '/negocios', 2, 'Nuevo', '#4CAF50');
+    menu.addItem('Eventos', 'event', '/', 3, 'Próximamente', '#afa674');
+    menu.addItem('Promociones', 'trending_up', '/', 4, 'Próximamente', '#7986CC');
   }
 
   private _currentlyOpen: SidenavItem[] = [];

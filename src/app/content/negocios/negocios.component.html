@@ -23,7 +23,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let row of todos | async | search : searchTerm" (click)="openEdit(row.id)">
-        <td class="avatar-cell"><img class="avatar" [src]="url + row.url_logo"></td>
+        <td class="avatar-cell">
+          <img class="avatar" [src]="url + row.url_logo" onerror="this.src='assets/img/common/no-image.gif'">
+        </td>
         <td>{{ row.nombre }} </td>
         <td>{{ row.tipo_suscripcion }}</td>
         <td>{{ row.fecha_fin_suscripcion | date:'dd/MM/yyyy'}}</td>

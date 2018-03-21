@@ -1,6 +1,9 @@
+import { Categoria } from './../clases/categoria';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Negocio } from './../clases/negocio';
+
+
 import {Injectable} from '@angular/core';
 import {BaseService} from './base.service';
 import {Http} from '@angular/http';
@@ -36,40 +39,59 @@ export class NegociosService {
 
 
 
-  getDetalleNegocio(id_negocio: number): Promise<Negocio> {
+    getDetalleNegocio(id_negocio: number): Promise<Negocio> {
 
-    console.log('id_negocio', id_negocio);
+        console.log('id_negocio', id_negocio);
 
-    const params = {
-        params: {
-            id_negocio: id_negocio
-        }
-    };
+        const params = {
+            params: {
+                id_negocio: id_negocio
+            }
+        };
 
-    return new Promise<Negocio>((resolve, reject) => {
-        this.baseService.get('detalles_negocio', params)
-            .then((response) => {
-                resolve(response.json() as Negocio);
-            })
-            .catch((error) => {
-                reject(error.json());
-            });
-    });
-}
+        return new Promise<Negocio>((resolve, reject) => {
+            this.baseService.get('detalles_negocio', params)
+                .then((response) => {
+                    resolve(response.json() as Negocio);
+                })
+                .catch((error) => {
+                    reject(error.json());
+                });
+        });
+    }
 
+    addItem(item: Negocio): Promise<Negocio> {
 
+        return new Promise<Negocio>((resolve, reject) => {
+            this.baseService.post('registrar_negocio', item)
+                .then((response) => {
+                    resolve(response.json() as Negocio);
+                })
+                .catch((error) => {
+                    reject(error.json());
+                });
+        });
+    }
 
-  addItem(item: Negocio) {
-    this.negocios.push(item);
-    console.log('addItem', item);
-  }
+    getCategorias(): Promise<Categoria[]> {
 
-  updateItem(id: string, item: Negocio) {
-    console.log('updateItem', id, item);
-  }
+        return new Promise<Categoria[]>((resolve, reject) => {
+            this.baseService.get('obtener_categorias_negocio_ids', {})
+                .then((response) => {
+                    resolve(response.json() as Categoria[]);
+                })
+                .catch((error) => {
+                    reject(error.json());
+                });
+        });
+    }
 
-  deleteItem(id: string) {
-    console.log('deleteItem', id);
-    this.negocios.pop();
-  }
+    updateItem(id: string, item: Negocio) {
+        console.log('updateItem', id, item);
+    }
+
+    deleteItem(id: string) {
+        console.log('deleteItem', id);
+        this.negocios.pop();
+    }
 }

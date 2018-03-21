@@ -1,6 +1,7 @@
 import { Negocio } from './../../../clases/negocio';
 import { NegociosService } from './../../../services/negocios.service';
-import { MatDialogRef } from '@angular/material';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import {Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material';
@@ -14,8 +15,14 @@ export class ModalNegocioComponent implements OnInit {
 
   isNew: boolean;
   negocio: Negocio = new Negocio;
+  isValid =  false;
+  form: FormGroup;
+
+
   constructor(public dialogRef: MatDialogRef<ModalNegocioComponent>,
               private negociosService: NegociosService,
+              private snackBar: MatSnackBar,
+              private fb: FormBuilder
               @Inject(MAT_DIALOG_DATA) public data: any ) {
 
                 console.log('ID', data);
@@ -23,12 +30,24 @@ export class ModalNegocioComponent implements OnInit {
                   this.isNew = false;
                   this.getNegocio(data.id)
                 } else {
-                  this.isNew = false;
+                  this.isNew = true;
                 }
    }
 
   ngOnInit() {
+    this.buildFormEdit();
   }
+
+  buildFormEdit(): void {
+    this.form = this.fb.group({
+    nombre: ['', [Validators.required]],
+    categoria_negocio_id: ['', [Validators.required]],
+    sitio_web: ['', []],
+    facebook: ['', []],
+    palabras_clave: ['', [Validators.required]],
+    descripcion_breve: ['', [Validators.required]],
+  })
+}
 
   getNegocio(id) {
     this.negociosService.getDetalleNegocio(id).then(data => {
@@ -38,7 +57,18 @@ export class ModalNegocioComponent implements OnInit {
   }
 
   actualizar() {
-    console.log('LOG', this.negocio);
+    console.log('ACTIALIZAR', this.negocio);
   }
+
+  agregar() {
+    this.negociosService.addItem(this.negocio).then((data) => {
+      this.snackBar.open('Se ha agregado ' + this.negocio.nombre + ' correctamente!', 'Cerrar', {
+        duration: 3000
+      });
+      this.dialogRef.close();
+    })
+    console.log('AGREGAR', this.negocio);
+  }
+
 
 }

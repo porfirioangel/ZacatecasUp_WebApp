@@ -1,6 +1,8 @@
+import { Categoria } from './../../../../clases/categoria';
 import { Component, OnInit, Input } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Negocio } from '../../../../clases/negocio';
+import { FormGroup } from '@angular/forms';
+import { NegociosService } from '../../../../services/negocios.service';
 
 @Component({
   selector: 'app-ms-datos-negocio',
@@ -12,32 +14,21 @@ export class DatosComponent implements OnInit {
   tags = [];
   @Input('item') item: Negocio;
   @Input('isNew') isNew: boolean;
+  @Input('form') form: FormGroup;
 
-  form: FormGroup;
+  categorias: Categoria[];
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
-
-
-  constructor(private fb: FormBuilder) { }
+  constructor(private negocioService: NegociosService) { }
 
   ngOnInit() {
-    if (this.isNew) {
-
-    } else {
-      this.buildFormEdit();
-      // this.form.patchValue(this.item);
-    }
-  }
-
-  buildFormEdit(): void {
-    console.log('ITEM', this.item)
-    this.form = this.fb.group({
-      nombre: ['', [Validators.required]],
-      sitio_web: ['', []],
-      facebook: ['', []],
-      palabras_clave: ['', [Validators.required]],
-      descripcion_breve: ['', [Validators.required]],
+    this.negocioService.getCategorias().then(categorias  => {
+        this.categorias = categorias;
     })
   }
-
 
 }

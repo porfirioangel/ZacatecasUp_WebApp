@@ -1,6 +1,8 @@
 <div class="inbox-compose">
   <div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">
+    
     <span>Nuevo Negocio</span>
+        {{negocio | json}}
     <button matDialogClose mat-icon-button>
       <mat-icon>close</mat-icon>
     </button>
@@ -8,14 +10,14 @@
   <div class="content" mat-dialog-content>
       <mat-tab-group>
           <mat-tab label="Datos Negocio">
-              <app-ms-datos-negocio  [item]="negocio" [isNew]="isNew">
+              <app-ms-datos-negocio  [item]="negocio" [isNew]="isNew" [form]="form">
               </app-ms-datos-negocio>
           </mat-tab>
           <mat-tab label="Descripción">
             <app-ms-descripcion-negocio [item]="negocio" [isNew]="isNew">
             </app-ms-descripcion-negocio>
           </mat-tab>
-          <mat-tab label="Foto">
+          <mat-tab label="Foto" *ngIf="!isNew">
             <app-negocios-fotos [item]="negocio" [isNew]="isNew">
             </app-negocios-fotos>
           </mat-tab>
@@ -31,9 +33,13 @@
     </button>
     <span fxFlex><!-- fill space --></span>
 
-    <button (click)="actualizar()" class="send" mat-raised-button color="primary">
+    <button (click)="agregar()" *ngIf="isNew" class="send" mat-raised-button color="primary" [disabled]="!form.valid">
       Guardar <mat-icon>save</mat-icon>
     </button>
+
+    <button (click)="actualizar()" *ngIf="!isNew" class="send" mat-raised-button color="primary" [disabled]="!form.valid">
+        Actualizar <mat-icon>save</mat-icon>
+      </button>
   </div>
 
 </div>

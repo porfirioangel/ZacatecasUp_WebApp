@@ -1,9 +1,16 @@
-{{form.value |json}}
 <form [formGroup]="form">
-
-<mat-form-field class="input-container">
+FORM: {{form.valid}}
+    <mat-form-field class="input-container">
       <input matInput placeholder="Nombre Negocio" [(ngModel)]="item.nombre"  formControlName="nombre" required>
     </mat-form-field>
+
+    <mat-form-field class="input-container">
+        <mat-select placeholder="Categoría" [(ngModel)]="item.categoria_negocio_id" formControlName="categoria_negocio_id" required>
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.categoria }}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>  
 
     <mat-form-field class="input-container">
       <input matInput placeholder="Sitio Web" [(ngModel)]="item.sitio_web" formControlName="sitio_web">
@@ -22,7 +29,11 @@
     </tag-input>
 
     <mat-form-field class="input-container">
-        <input matInput #message maxlength="100" placeholder="Descripción Breve" [value]="item.descripcion_breve" formControlName="descripcion_breve"
+        <input matInput #message maxlength="100" 
+        placeholder="Descripción Breve" 
+        [value]="item.descripcion_breve"  
+        [(ngModel)]="item.descripcion_breve" 
+        formControlName="descripcion_breve"
         required>
         <mat-hint align="start"><strong>Describa las características de su negocio</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 100</mat-hint>

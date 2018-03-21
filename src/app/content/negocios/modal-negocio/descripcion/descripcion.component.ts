@@ -42,11 +42,16 @@ export class DescripcionComponent implements OnInit {
 
   addElement() {
     const key =   this.getKey(this.titulo);
+    if (this.item.descripcion_completa === undefined) {
+      this.item.descripcion_completa = {}
+    }
+
     this.item.descripcion_completa[key] = {
       'tipo': this.tipo ? 'texto' : 'lista',
       'titulo': this.titulo,
       'contenido': this.tipo ? this.descripcion : this.caracteristicas
     }
+
     this.refresh();
   }
 

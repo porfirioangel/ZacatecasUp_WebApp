@@ -1,7 +1,7 @@
 export class Negocio {
   id?: number;
   nombre?: number;
-  categoria?: string;
+  categoria_negocio_id?: number;
   logotipo?: string;
   calificacion?: number;
   sitio_web?: string;
@@ -14,5 +14,11 @@ export class Negocio {
   comentarios?: any[];
 
   constructor() {
+    this.galeria = [
+      '', '', ''
+    ]
+    this.descripcion_breve = '',
+    this.latitud = 22.7633237;
+    this.longitud = -102.5966308;
   }
 }
