@@ -1,8 +1,6 @@
 <div class="inbox-compose">
   <div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">
-    
     <span>Nuevo Negocio</span>
-        {{negocio | json}}
     <button matDialogClose mat-icon-button>
       <mat-icon>close</mat-icon>
     </button>
@@ -13,7 +11,7 @@
               <app-ms-datos-negocio  [item]="negocio" [isNew]="isNew" [form]="form">
               </app-ms-datos-negocio>
           </mat-tab>
-          <mat-tab label="Descripción">
+          <mat-tab label="Descripción" required>
             <app-ms-descripcion-negocio [item]="negocio" [isNew]="isNew">
             </app-ms-descripcion-negocio>
           </mat-tab>
@@ -33,11 +31,11 @@
     </button>
     <span fxFlex><!-- fill space --></span>
 
-    <button (click)="agregar()" *ngIf="isNew" class="send" mat-raised-button color="primary" [disabled]="!form.valid">
+    <button (click)="agregar()" *ngIf="isNew" class="send" mat-raised-button color="primary" [disabled]="!form.valid || !negocio.descripcion_completa" matTooltip="Descripción Requerida">
       Guardar <mat-icon>save</mat-icon>
     </button>
 
-    <button (click)="actualizar()" *ngIf="!isNew" class="send" mat-raised-button color="primary" [disabled]="!form.valid">
+    <button (click)="actualizar()" *ngIf="!isNew" class="send" mat-raised-button color="primary" [disabled]="!form.valid || !negocio.descripcion_completa" matTooltip="Descripción Requerida">
         Actualizar <mat-icon>save</mat-icon>
       </button>
   </div>
