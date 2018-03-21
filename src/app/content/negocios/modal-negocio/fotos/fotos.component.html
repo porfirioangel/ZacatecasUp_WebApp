@@ -6,7 +6,7 @@
   
     <img width="400px" [src]="url + item.logotipo" onerror="this.src='assets/img/common/no-image.gif'">
     <label style="width:400px"  class="mat-raised-button" for="filesLogo">Cambiar Imagen..</label>
-    <input id="files" style="visibility:hidden;" type="fileLogo" (change)="uploadLogo($event)" accept="image/*">
+    <input id="filesLogo" style="visibility:hidden;" type="file" (change)="uploadLogo($event)" accept="image/*">
   
     <h3 matLine>Galería</h3>
 

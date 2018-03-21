@@ -23,8 +23,9 @@ export class FotosComponent implements OnInit {
 
 
   uploadLogo(event) {
-    const selectedFiles = event.target.files;
-    const file = selectedFiles.item(0);
+    console.log('Cambiar foto perfil');
+
+    const file = event.target.files.item(0);
     const url = environment.host + '/upload.php'
 
     let img = this.item.logotipo;
@@ -33,7 +34,7 @@ export class FotosComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('file', file, img);
 
-    formData.append('fileName', 'hola');
+    formData.append('fileName', img);
     this.http.post(url, formData)
     .toPromise()
     .then((response: any) => {
@@ -47,4 +48,3 @@ export class FotosComponent implements OnInit {
 
 
 }
- 
