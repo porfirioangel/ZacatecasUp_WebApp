@@ -17,11 +17,6 @@ export class DatosComponent implements OnInit {
   @Input('form') form: FormGroup;
 
   categorias: Categoria[];
-  foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
 
   constructor(private negocioService: NegociosService) { }
 

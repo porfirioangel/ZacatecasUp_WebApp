@@ -57,17 +57,17 @@ export class BaseService {
   }
 
   put(url: string, params: any): Promise<any> {
-    const urlReq = environment.api + 'detalles_negocio';
+    const urlReq = environment.api + url;
 
     params.token = this.storage.get('token');
 
-    console.log('>>POST<<<', url, params);
+    console.log('>>PUT<<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
         this.http.put(urlReq, params)
             .toPromise()
             .then((response) => {
-                console.log('POST request', response.url);
+                console.log('PUT request', response.url);
                 resolve(response.json());
             })
             .catch((error) => {
@@ -78,7 +78,7 @@ export class BaseService {
 
 
   delete(url: string, params: any): Promise<any> {
-    const urlReq = environment.api + 'detalles_negocio';
+    const urlReq = environment.api + url;
 
     params.token = this.storage.get('token');
 
@@ -88,7 +88,7 @@ export class BaseService {
         this.http.delete(urlReq, params)
             .toPromise()
             .then((response) => {
-                console.log('POST request', response.url);
+                console.log('DELETE request', response.url);
                 resolve(response.json());
             })
             .catch((error) => {

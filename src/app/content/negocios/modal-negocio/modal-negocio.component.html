@@ -26,7 +26,7 @@
         </mat-tab-group>
   </div>
   <div mat-dialog-actions fxLayout="row">
-    <button matDialogClose mat-icon-button>
+    <button matDialogClose mat-icon-button (click)="eliminar()" *ngIf="!isNew">
       <mat-icon>delete</mat-icon>
     </button>
     <span fxFlex><!-- fill space --></span>

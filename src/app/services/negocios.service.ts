@@ -86,12 +86,32 @@ export class NegociosService {
         });
     }
 
-    updateItem(id: string, item: Negocio) {
+    updateItem(id: number, item: Negocio) {
         console.log('updateItem', id, item);
+        return new Promise<Negocio>((resolve, reject) => {
+            this.baseService.put('actualizar_negocio', item)
+                .then((response) => {
+                    resolve(response.json() as Negocio);
+                })
+                .catch((error) => {
+                    reject(error.json());
+                });
+        });
     }
 
-    deleteItem(id: string) {
+    deleteItem(id: number) {
         console.log('deleteItem', id);
-        this.negocios.pop();
+        const params = {
+            id: id
+        }
+        return new Promise<Negocio>((resolve, reject) => {
+            this.baseService.delete('eliminar_negocio', params)
+                .then((response) => {
+                    resolve(response.json() as Negocio);
+                })
+                .catch((error) => {
+                    reject(error.json());
+                });
+        });
     }
 }
