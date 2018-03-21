@@ -68,7 +68,7 @@ export class NegociosService {
                     resolve(response.json() as Negocio);
                 })
                 .catch((error) => {
-                    reject(error.json());
+                    reject(error);
                 });
         });
     }
@@ -81,7 +81,7 @@ export class NegociosService {
                     resolve(response.json() as Categoria[]);
                 })
                 .catch((error) => {
-                    reject(error.json());
+                    reject(error);
                 });
         });
     }
@@ -94,7 +94,7 @@ export class NegociosService {
                     resolve(response.json() as Negocio);
                 })
                 .catch((error) => {
-                    reject(error.json());
+                    reject(error);
                 });
         });
     }
@@ -107,10 +107,10 @@ export class NegociosService {
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.delete('eliminar_negocio', params)
                 .then((response) => {
-                    resolve(response.json() as Negocio);
+                    resolve(response);
                 })
                 .catch((error) => {
-                    reject(error.json());
+                    reject(error);
                 });
         });
     }

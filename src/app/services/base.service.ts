@@ -1,5 +1,6 @@
+import { HttpHeaders } from '@angular/common/http';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
-import {Headers, Http} from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import {Inject, Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {environment} from '../../environments/environment';
@@ -64,7 +65,9 @@ export class BaseService {
     console.log('>>PUT<<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
-        this.http.put(urlReq, params)
+        this.http.put(urlReq, new RequestOptions({
+            body: params
+         }))
             .toPromise()
             .then((response) => {
                 console.log('PUT request', response.url);
@@ -85,7 +88,9 @@ export class BaseService {
     console.log('>>POST<<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
-        this.http.delete(urlReq, params)
+        this.http.delete(urlReq,  new RequestOptions({
+            body: params
+         }))
             .toPromise()
             .then((response) => {
                 console.log('DELETE request', response.url);
