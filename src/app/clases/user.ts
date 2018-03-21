@@ -7,6 +7,7 @@ export class User {
 
   sexo?: string;
   fecha_nacimiento?: any;
+  tipo_usuario?: string;
 
   constructor() {
   }

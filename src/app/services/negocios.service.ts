@@ -27,13 +27,11 @@ export class NegociosService {
                 this.baseService.post('catalogo_negocios', {})
                     .then((response) => {
                         this.negocioSubject.next(response);
-                        console.log('hola', response);
-                        // return (response.json() as Negocio[]);
                     })
                     .catch((error) => {
                     // return (error);
                     });
-        }, 5000)
+        }, 5000) // CADA 5 SEGUNDOS SE VERIFICAN LOS DATOS
     }
 
 

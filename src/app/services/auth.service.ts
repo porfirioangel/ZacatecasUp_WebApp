@@ -75,6 +75,31 @@ export class AuthService {
 
   registerUser(userRegister: User) {
     console.log('registerUser', userRegister)
+    userRegister.tipo_usuario = 'UsuarioNormal'
+
+    const fecha  = new Date(userRegister.fecha_nacimiento);
+    const ano = fecha.getFullYear();
+    const mes = fecha.getMonth() + 1;
+    const dia = fecha.getDay();
+    userRegister.fecha_nacimiento = ano + '-' + mes + '-' + dia;
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(environment.api + 'registrar_usuario', userRegister)
+          .toPromise()
+          .then((response) => {
+            this.snackBar.open('Te haz registrado correctamente', 'Cerrar', {
+              duration: 3000
+            });
+            resolve(response);
+          })
+          .catch((error) => {
+            console.log('error', error.error.error);
+            this.snackBar.open(error.error.error, 'Cerrar', {
+              duration: 3000
+            });
+            reject(error);
+          });
+    });
   }
 
   deleteUser(user) {

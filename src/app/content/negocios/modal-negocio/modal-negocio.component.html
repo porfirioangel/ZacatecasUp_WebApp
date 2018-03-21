@@ -14,7 +14,11 @@
           <mat-tab label="Descripción">
             <app-ms-descripcion-negocio [item]="negocio" [isNew]="isNew">
             </app-ms-descripcion-negocio>
-        </mat-tab>
+          </mat-tab>
+          <mat-tab label="Foto">
+            <app-negocios-fotos [item]="negocio" [isNew]="isNew">
+            </app-negocios-fotos>
+          </mat-tab>
           <mat-tab label="Ubicación">
             <app-ms-mapa-negocio [item]="negocio" [isNew]="isNew">
             </app-ms-mapa-negocio>

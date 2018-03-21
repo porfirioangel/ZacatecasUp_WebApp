@@ -26,13 +26,11 @@
         <mat-form-field>
           <input matInput placeholder="Password" type="password" name="user.password" required [(ngModel)]="user.password">
         </mat-form-field>
-        {{form.valid }}
-        {{file !== null}}
         <div>
             <label class="mat-raised-button" for="files" style="display: table;width: 100%;">Subir imagen de perfil</label>
             <input id="files" style="visibility:hidden;" type="file" (change)="uploadImgProfile($event)" accept="image/*">
           </div>
-        <button color="primary" mat-raised-button [disabled]="!form.valid && file !== null">Crear Cuenta</button>
+        <button color="primary" mat-raised-button [disabled]="!form.valid || !img"file>Crear Cuenta</button>
         <p class="note">Tienes una cuenta?<br/> <a [routerLink]="['/login']">Login</a></p>
       </div>
     </form>
