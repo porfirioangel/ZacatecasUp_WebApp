@@ -65,9 +65,7 @@ export class BaseService {
     console.log('>>PUT<<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
-        this.http.put(urlReq, new RequestOptions({
-            body: params
-         }))
+        this.http.put(urlReq, params)
             .toPromise()
             .then((response) => {
                 console.log('PUT request', response.url);

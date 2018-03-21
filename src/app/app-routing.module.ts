@@ -50,7 +50,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent,
+        component: NegociosComponent,
         pathMatch: 'full'
       },
       {

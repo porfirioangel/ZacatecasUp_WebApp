@@ -73,6 +73,8 @@ export class ModalNegocioComponent implements OnInit {
       this.snackBar.open('Se produjo un error al actualizar ' + this.negocio.nombre + '!', 'Cerrar', {
         duration: 3000
       });
+      this.dialogRef.close();
+
     })
   }
 
@@ -88,6 +90,8 @@ export class ModalNegocioComponent implements OnInit {
       this.snackBar.open('Se produjo un error al agregar ' + this.negocio.nombre + '!', 'Cerrar', {
         duration: 3000
       });
+      this.dialogRef.close();
+
     })
   }
   eliminar() {

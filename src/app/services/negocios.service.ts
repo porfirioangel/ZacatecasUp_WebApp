@@ -62,6 +62,8 @@ export class NegociosService {
 
     addItem(item: Negocio): Promise<Negocio> {
 
+        item.descripcion_completa = JSON.stringify(item.descripcion_completa)
+
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.post('registrar_negocio', item)
                 .then((response) => {
@@ -87,6 +89,7 @@ export class NegociosService {
     }
 
     updateItem(id: number, item: Negocio) {
+        item.descripcion_completa = JSON.stringify(item.descripcion_completa)
         console.log('updateItem', id, item);
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.put('actualizar_negocio', item)
