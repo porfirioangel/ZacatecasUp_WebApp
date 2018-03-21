@@ -23,7 +23,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let row of todos | async | search : searchTerm" (click)="openEdit(row.id)">
-        <td class="avatar-cell"><img class="avatar" [src]="'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Mcdonald%27s_logo.svg/220px-Mcdonald%27s_logo.svg.png'"></td>
+        <td class="avatar-cell"><img class="avatar" [src]="url + row.url_logo"></td>
         <td>{{ row.nombre }} </td>
         <td>{{ row.tipo_suscripcion }}</td>
         <td>{{ row.fecha_fin_suscripcion | date:'dd/MM/yyyy'}}</td>

@@ -31,6 +31,7 @@ export class NegociosComponent implements OnInit {
   searchTerm: string;
   private todos: Observable<Negocio[]>;
 
+  url =  environment.host;
 
   dialogRef: MatDialogRef<ModalNegocioComponent>;
 

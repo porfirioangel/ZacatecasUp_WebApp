@@ -37,4 +37,8 @@ export class ModalNegocioComponent implements OnInit {
     })
   }
 
+  actualizar() {
+    console.log('LOG', this.negocio);
+  }
+
 }

@@ -13,7 +13,6 @@ export class Negocio {
   palabras_clave?: string[];
   comentarios?: any[];
 
-
   constructor() {
   }
 }

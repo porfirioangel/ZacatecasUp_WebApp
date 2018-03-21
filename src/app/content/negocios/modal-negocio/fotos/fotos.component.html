@@ -1,3 +1,25 @@
-<p>
-  fotos works!
-</p>
+<mat-card-content fxLayout="column">
+  <div class="example-container">
+
+  
+  <h3 matLine>Logotipo</h3>
+  
+    <img width="100%" [src]="url + item.logotipo" onerror="this.src='assets/img/common/no-image.gif'">
+    <label class="mat-raised-button" for="filesLogo">Cambiar Imagen..</label>
+    <input id="files" style="visibility:hidden;" type="fileLogo" (change)="uploadLogo($event)" accept="image/*">
+  
+
+
+    <h3 matLine>Galería</h3>
+    <img width="100%" [src]="'http'" onerror="this.src='assets/img/common/no-image.gif'">
+    <label class="mat-raised-button" for="filesGal1">Cambiar Imagen..</label>
+    <input id="files" style="visibility:hidden;" type="filesGal1" (change)="detectFiles($event)" accept="image/*">
+    <img width="100%" [src]="'http'" onerror="this.src='assets/img/common/no-image.gif'">
+    <label class="mat-raised-button" for="filesGal2">Cambiar Imagen..</label>
+    <input id="files" style="visibility:hidden;" type="filesGal2" (change)="detectFiles($event)" accept="image/*">
+    <img width="100%" [src]="'http'" onerror="this.src='assets/img/common/no-image.gif'">
+    <label class="mat-raised-button" for="filesGal3">Cambiar Imagen..</label>
+    <input id="files" style="visibility:hidden;" type="filesGal3" (change)="detectFiles($event)" accept="image/*">
+  
+</div>
+</mat-card-content>
