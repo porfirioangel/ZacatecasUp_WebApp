@@ -25,14 +25,14 @@ export class NegociosService {
     }
 
     refresh() {
-      console.log('Refresh Negocios');
-      this.baseService.post('catalogo_negocios', {})
-        .then((response) => {
-          this.negocioSubject.next(response);
-        })
-        .catch((error) => {
-          // return (error);
-        });
+        console.log('Refresh Negocios');
+        this.baseService.post('catalogo_negocios', {})
+            .then((response) => {
+                this.negocioSubject.next(response);
+            })
+            .catch((error) => {
+            // return (error);
+            });
     }
 
 
@@ -61,11 +61,12 @@ export class NegociosService {
     addItem(item: Negocio): Promise<Negocio> {
 
         item.descripcion_completa = JSON.stringify(item.descripcion_completa)
+        item.palabras_clave = JSON.stringify(item.palabras_clave)
 
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.post('registrar_negocio', item)
                 .then((response) => {
-                    resolve(response.json() as Negocio);
+                    resolve(response);
                 })
                 .catch((error) => {
                     reject(error);
@@ -87,7 +88,10 @@ export class NegociosService {
     }
 
     updateItem(id: number, item: Negocio) {
+        
         item.descripcion_completa = JSON.stringify(item.descripcion_completa)
+        item.palabras_clave = "[\"Tostadas\", \"Jerez\",  \"Grasa\"]"
+
         console.log('updateItem', id, item);
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.put('actualizar_negocio', item)

@@ -36,6 +36,7 @@ export class ModalNegocioComponent implements OnInit {
                   this.getNegocio(data.id)
                 } else {
                   this.isNew = true;
+                  this.form.patchValue(this.negocio)
                 }
    }
 
@@ -58,6 +59,7 @@ export class ModalNegocioComponent implements OnInit {
     this.negociosService.getDetalleNegocio(id).then(data => {
       console.log('NEGOCIO', data);
       this.negocio = data;
+      this.form.patchValue(this.negocio)
     })
   }
 

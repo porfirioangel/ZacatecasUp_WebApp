@@ -10,7 +10,7 @@ export class Negocio {
   galeria?: string[];
   descripcion_breve?: string;
   descripcion_completa?: any;
-  palabras_clave?: string[];
+  palabras_clave?: any;
   comentarios?: any[];
 
   constructor() {

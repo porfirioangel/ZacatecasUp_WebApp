@@ -42,7 +42,7 @@ export class BaseService {
 
     params.token = this.storage.get('token');
 
-    console.log('>>POST<<<', url, params);
+    console.log('>> POST <<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
         this.http.post(urlReq, params)
@@ -62,7 +62,7 @@ export class BaseService {
 
     params.token = this.storage.get('token');
 
-    console.log('>>PUT<<<', url, params);
+    console.log('>> PUT <<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
         this.http.put(urlReq, params)
@@ -83,7 +83,7 @@ export class BaseService {
 
     params.token = this.storage.get('token');
 
-    console.log('>>POST<<<', url, params);
+    console.log('>> DELETE <<<', url, params);
 
     return new Promise<any>((resolve, reject) => {
         this.http.delete(urlReq,  new RequestOptions({
