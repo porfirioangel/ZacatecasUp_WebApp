@@ -1,10 +1,8 @@
 <mat-card-content fxLayout="column">
   <div class="example-container" *ngIf="!imgRefresh">
-
-  
   <h3 matLine>Logotipo</h3>
 
-    <img width="400px" [src]="url + item.logotipo" onerror="this.src='assets/img/common/no-image.gif'">
+    <img width="400px" [src]="url + item.logotipo + '?' + random" onerror="this.src='assets/img/common/no-image.gif'">
     <label style="width:400px"  class="mat-raised-button" for="filesLogo">Cambiar Imagen..</label>
     <input id="filesLogo" style="visibility:hidden;" type="file" (change)="uploadLogo($event)" accept="image/*">  
     <h3 matLine>Galería</h3>
@@ -13,17 +11,17 @@
     <table >
         <tr>
           <th>
-              <img width="100%" [src]="url + item.galeria[0]" onerror="this.src='assets/img/common/no-image.gif'" *ngIf="!imgRefresh">
+              <img width="100%" [src]="url + item.galeria[0] + '?' + random" onerror="this.src='assets/img/common/no-image.gif'" *ngIf="!imgRefresh">
               <label  style="width:100%" width="100%" class="mat-raised-button" for="filesGal1">Cambiar Imagen..</label>
               <input id="filesGal1" style="visibility:hidden;" type="file" (change)="uploadGal1($event)" accept="image/*">
           </th>
           <th>
-              <img width="100%" [src]="url + item.galeria[1]" onerror="this.src='assets/img/common/no-image.gif'">
+              <img width="100%" [src]="url + item.galeria[1] + '?' + random" onerror="this.src='assets/img/common/no-image.gif'">
               <label  style="width:100%" width="100%" class="mat-raised-button" for="filesGal2">Cambiar Imagen..</label>
               <input id="filesGal2" style="visibility:hidden;" type="file" (change)="uploadGal2($event)" accept="image/*">
           </th>
           <th>
-              <img width="100%" [src]="url + item.galeria[2]" onerror="this.src='assets/img/common/no-image.gif'">
+              <img width="100%" [src]="url + item.galeria[2] + '?' + random" onerror="this.src='assets/img/common/no-image.gif'">
               <label  style="width:100%" width="100%" class="mat-raised-button" for="filesGal3">Cambiar Imagen..</label>
               <input id="filesGal3" style="visibility:hidden;" type="file" (change)="uploadGal3($event)" accept="image/*">
           </th>

@@ -2,6 +2,7 @@ import { environment } from './../../../../../environments/environment.prod';
 import { Negocio } from './../../../../clases/negocio';
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-negocios-fotos',
@@ -23,9 +24,14 @@ export class FotosComponent implements OnInit {
 
   imgRefresh = false;
 
+  random: number;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+      setInterval(() => {
+        this.random  = Math.random();
+      }, 1000)
   }
 
 
