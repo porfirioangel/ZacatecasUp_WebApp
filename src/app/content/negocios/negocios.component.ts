@@ -64,13 +64,13 @@ export class NegociosComponent implements OnInit {
 
   openNew() {
     this.dialogRef = this.dialog.open(ModalNegocioComponent, {
-      disableClose: false,
+      disableClose: true,
     });
   }
 
   openEdit(id) {
     this.dialogRef = this.dialog.open(ModalNegocioComponent, {
-      disableClose: false,
+      disableClose: true,
       data  : {
         id: id
       }
