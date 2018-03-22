@@ -1,7 +1,7 @@
 export class User {
   id?: string;
   nombre?: string;
-  photoURL?: string;
+  profile_photo?: string;
   password?: string;
   email?: string;
 
