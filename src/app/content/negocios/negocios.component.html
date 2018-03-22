@@ -32,7 +32,7 @@
       <tr *ngFor="let row of todos | async | search : searchTerm"
           (click)="openEdit(row.id)">
         <td class="avatar-cell">
-          <img class="avatar" [src]="url + row.url_logo"
+          <img class="avatar" [src]="url + row.url_logo + '?' + random"
                onerror="this.src='assets/img/common/no-image.gif'">
         </td>
         <td>{{ row.nombre }}</td>
