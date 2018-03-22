@@ -1,18 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="margin: 0px 0;">
+  <mat-card fxFlex="90%" style="padding-bottom: 0px; padding-top: 4px">
+    <mat-form-field class="search" floatingPlaceholder="false"
+                    [class.search-open]="true">
+      <input #input matInput placeholder="Buscar..." (keyup)="search($event)">
+    </mat-form-field>
+  </mat-card>
+</div>
 
-  <div fxLayout="row" fxLayoutAlign="center center" style="margin: 0px 0;">
-    <mat-card fxFlex="90%" style="padding-bottom: 0px; padding-top: 4px">
-      <mat-form-field class="search" floatingPlaceholder="false" [class.search-open]="true">
-        <input #input matInput placeholder="Buscar..." (keyup)="search($event)">
-      </mat-form-field>
-    </mat-card>
-  </div>
+<br/>
 
-<br>
-<br>
+<div fxLayout="row" fxLayoutAlign="center center" style="margin: 0px 0;">
+  <button mat-raised-button color="primary"
+  (click)="service.refresh()">Actualizar</button>
+</div>
+
+<br/>
 
 <div fxLayout="column" fxLayout.gt-md="row">
   <div fxFlex class="mat-elevation-z2">
-    <table class="table" [class.table-hover]="true" [class.table-striped]="true" [class.table-condensed]="true" [class.table-bordered]="true">
+    <table class="table" [class.table-hover]="true" [class.table-striped]="true"
+           [class.table-condensed]="true" [class.table-bordered]="true">
       <thead>
       <tr>
         <th></th>
@@ -22,11 +29,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let row of todos | async | search : searchTerm" (click)="openEdit(row.id)">
+      <tr *ngFor="let row of todos | async | search : searchTerm"
+          (click)="openEdit(row.id)">
         <td class="avatar-cell">
-          <img class="avatar" [src]="url + row.url_logo" onerror="this.src='assets/img/common/no-image.gif'">
+          <img class="avatar" [src]="url + row.url_logo"
+               onerror="this.src='assets/img/common/no-image.gif'">
         </td>
-        <td>{{ row.nombre }} </td>
+        <td>{{ row.nombre }}</td>
         <td>{{ row.tipo_suscripcion }}</td>
         <td>{{ row.fecha_fin_suscripcion | date:'dd/MM/yyyy'}}</td>
       </tr>
@@ -38,4 +47,5 @@
 </div>
 
 
-<button mat-fab color="primary" class="btn-floating" (click)="openNew()">New</button>
+<button mat-fab color="primary" class="btn-floating" (click)="openNew()">New
+</button>

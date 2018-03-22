@@ -25,16 +25,14 @@ export class NegociosService {
     }
 
     refresh() {
-        setInterval(() => {
-            console.log('Refresh Negocios');
-                this.baseService.post('catalogo_negocios', {})
-                    .then((response) => {
-                        this.negocioSubject.next(response);
-                    })
-                    .catch((error) => {
-                    // return (error);
-                    });
-        }, 5000) // CADA 5 SEGUNDOS SE VERIFICAN LOS DATOS
+      console.log('Refresh Negocios');
+      this.baseService.post('catalogo_negocios', {})
+        .then((response) => {
+          this.negocioSubject.next(response);
+        })
+        .catch((error) => {
+          // return (error);
+        });
     }
 
 
