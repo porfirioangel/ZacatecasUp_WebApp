@@ -17,6 +17,9 @@ export class FotosComponent implements OnInit {
   url = environment.host;
 
   fileLogo;
+  fileGal1;
+  fileGal2;
+  fileGal3;
 
   imgRefresh = false;
 
@@ -41,7 +44,6 @@ export class FotosComponent implements OnInit {
     .toPromise()
     .then((response: any) => {
         this.imgRefresh = false
-        console.log('IMG', response);
     })
     .catch((error) => {
         console.log('POST request error', error);
@@ -50,21 +52,62 @@ export class FotosComponent implements OnInit {
 
 
   uploadGal1(event) {
-    this.imgRefresh = false
+    this.imgRefresh = true
     const selectedFiles = event.target.files;
-    this.fileLogo = selectedFiles.item(0);
-    console.log(this.fileLogo)
+    this.fileGal1 = selectedFiles.item(0);
+    console.log(this.fileGal1)
 
     const url = environment.host + '/upload.php'
-    const img = this.item.logotipo.replace('/uploads/', '');
+    const img = this.item.galeria[0].replace('/uploads/', '');
     const formData: FormData = new FormData();
-    formData.append('file', this.fileLogo, img);
+    formData.append('file', this.fileGal1, img);
     formData.append('fileName', 'hola');
     this.http.post(url, formData)
     .toPromise()
     .then((response: any) => {
-        this.imgRefresh = true
-        console.log('IMG', response);
+        this.imgRefresh = false
+    })
+    .catch((error) => {
+        console.log('POST request error', error);
+    });
+  }
+
+  uploadGal2(event) {
+    this.imgRefresh = true
+    const selectedFiles = event.target.files;
+    this.fileGal2 = selectedFiles.item(0);
+    console.log(this.fileGal2)
+
+    const url = environment.host + '/upload.php'
+    const img = this.item.galeria[1].replace('/uploads/', '');
+    const formData: FormData = new FormData();
+    formData.append('file', this.fileGal2, img);
+    formData.append('fileName', 'hola');
+    this.http.post(url, formData)
+    .toPromise()
+    .then((response: any) => {
+        this.imgRefresh = false
+    })
+    .catch((error) => {
+        console.log('POST request error', error);
+    });
+  }
+
+  uploadGal3(event) {
+    this.imgRefresh = true
+    const selectedFiles = event.target.files;
+    this.fileGal3 = selectedFiles.item(0);
+    console.log(this.fileGal3)
+
+    const url = environment.host + '/upload.php'
+    const img = this.item.galeria[2].replace('/uploads/', '');
+    const formData: FormData = new FormData();
+    formData.append('file', this.fileGal3, img);
+    formData.append('fileName', 'hola');
+    this.http.post(url, formData)
+    .toPromise()
+    .then((response: any) => {
+        this.imgRefresh = false
     })
     .catch((error) => {
         console.log('POST request error', error);

@@ -68,6 +68,14 @@ export class NegociosService {
             this.baseService.post('registrar_negocio', item)
                 .then((response) => {
                     resolve(response);
+
+                    const params = {
+                        id_negocio : response.id,
+                        fecha_fin : '2018-12-31',
+                        tipo: 'Normal',
+                    }
+
+                    this.baseService.put('actualizar_suscripcion', params)
                     this.refresh();
                 })
                 .catch((error) => {
@@ -75,6 +83,8 @@ export class NegociosService {
                 });
         });
     }
+
+
 
     getCategorias(): Promise<Categoria[]> {
 
