@@ -28,7 +28,7 @@ export class AuthService {
       this.baseService.post('check_login', params)
           .then((response) => {
             if (response.token) {
-              this.user = response;
+              this.user = response as User;
               this.router.navigate(['/']);
             } else {
               this.router.navigate(['/login']);
@@ -39,7 +39,8 @@ export class AuthService {
           });
   }
 
-  getUser(): User {
+  public getUser(): User {
+    console.log('getUser()', this.user)
     return this.user;
   }
   signUpWithEmail(email: string, password: string) {

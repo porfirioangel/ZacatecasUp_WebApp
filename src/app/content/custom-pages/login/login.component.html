@@ -6,14 +6,15 @@
     <form #form="ngForm" (ngSubmit)="login()">
       <div class="login-content" fxLayout="column" fxLayoutAlign="start stretch">
           <mat-form-field>
-            <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="email">
+            <input matInput placeholder="Email" type="text" name="email"
+                   required [(ngModel)]="email">
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="Contraseña" type="password" name="password" required [(ngModel)]="password">
           </mat-form-field>
           <div class="extra-options" fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-checkbox class="remember-me">Recordar</mat-checkbox>
-            <a class="forgot-password" [routerLink]="['/forgot-password']">Olvidé Constraseña</a>
+            <!--<mat-checkbox class="remember-me">Recordar</mat-checkbox>-->
+            <!--<a class="forgot-password" [routerLink]="['/forgot-password']">Olvidé Constraseña</a>-->
           </div>
           <button color="primary" mat-raised-button [disabled]="!form.valid">Entrar</button>
         <p class="note">¿No tienes cuenta?<br/> <a [routerLink]="['/register']">Click aquí y crea una</a></p>
