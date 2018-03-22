@@ -1,23 +1,21 @@
 <mat-card-content fxLayout="column">
-  <div class="example-container">
+  <div class="example-container" *ngIf="!imgRefresh">
 
   
   <h3 matLine>Logotipo</h3>
-  
+
     <img width="400px" [src]="url + item.logotipo" onerror="this.src='assets/img/common/no-image.gif'">
     <label style="width:400px"  class="mat-raised-button" for="filesLogo">Cambiar Imagen..</label>
-    <input id="filesLogo" style="visibility:hidden;" type="file" (change)="uploadLogo($event)" accept="image/*">
-  
+    <input id="filesLogo" style="visibility:hidden;" type="file" (change)="uploadLogo($event)" accept="image/*">  
     <h3 matLine>Galería</h3>
 
     <hr>
     <table >
-      
         <tr>
           <th>
-              <img width="100%" [src]="url + item.galeria[0]" onerror="this.src='assets/img/common/no-image.gif'">
+              <img width="100%" [src]="url + item.galeria[0]" onerror="this.src='assets/img/common/no-image.gif'" *ngIf="!imgRefresh">
               <label  style="width:100%" width="100%" class="mat-raised-button" for="filesGal1">Cambiar Imagen..</label>
-              <input id="filesGal1" style="visibility:hidden;" type="file" (change)="uploadLogo($event)" accept="image/*">
+              <input id="filesGal1" style="visibility:hidden;" type="file" (change)="uploadLogo($event, 0)" accept="image/*">
           </th>
           <th>
               <img width="100%" [src]="url + item.galeria[1]" onerror="this.src='assets/img/common/no-image.gif'">
@@ -31,6 +29,11 @@
           </th>
         </tr>
       </table>
-  
 </div>
+
+<mat-list class="list mat-elevation-z1" *ngIf="imgRefresh">
+    <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+</mat-list>
+  
+
 </mat-card-content>

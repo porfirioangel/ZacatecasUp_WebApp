@@ -16,6 +16,10 @@ export class FotosComponent implements OnInit {
 
   url = environment.host;
 
+  fileLogo;
+
+  imgRefresh = false;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -23,23 +27,21 @@ export class FotosComponent implements OnInit {
 
 
   uploadLogo(event) {
-    console.log('Cambiar foto perfil');
+    this.imgRefresh = true
+    const selectedFiles = event.target.files;
+    this.fileLogo = selectedFiles.item(0);
+    console.log(this.fileLogo)
 
-    const file = event.target.files.item(0);
     const url = environment.host + '/upload.php'
-
-    let img = this.item.logotipo;
-
-    img = img.replace('/uploads/', '');
+    const img = this.item.logotipo.replace('/uploads/', '');
     const formData: FormData = new FormData();
-    formData.append('file', file, img);
-
-    formData.append('fileName', img);
+    formData.append('file', this.fileLogo, img);
+    formData.append('fileName', 'hola');
     this.http.post(url, formData)
     .toPromise()
     .then((response: any) => {
+        this.imgRefresh = false
         console.log('IMG', response);
-
     })
     .catch((error) => {
         console.log('POST request error', error);
@@ -47,4 +49,25 @@ export class FotosComponent implements OnInit {
   }
 
 
+  uploadGal1(event) {
+    this.imgRefresh = false
+    const selectedFiles = event.target.files;
+    this.fileLogo = selectedFiles.item(0);
+    console.log(this.fileLogo)
+
+    const url = environment.host + '/upload.php'
+    const img = this.item.logotipo.replace('/uploads/', '');
+    const formData: FormData = new FormData();
+    formData.append('file', this.fileLogo, img);
+    formData.append('fileName', 'hola');
+    this.http.post(url, formData)
+    .toPromise()
+    .then((response: any) => {
+        this.imgRefresh = true
+        console.log('IMG', response);
+    })
+    .catch((error) => {
+        console.log('POST request error', error);
+    });
+  }
 }

@@ -63,10 +63,12 @@ export class NegociosService {
         item.descripcion_completa = JSON.stringify(item.descripcion_completa)
         item.palabras_clave = JSON.stringify(item.palabras_clave)
 
+
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.post('registrar_negocio', item)
                 .then((response) => {
                     resolve(response);
+                    this.refresh();
                 })
                 .catch((error) => {
                     reject(error);
@@ -88,14 +90,15 @@ export class NegociosService {
     }
 
     updateItem(id: number, item: Negocio) {
-        
         item.descripcion_completa = JSON.stringify(item.descripcion_completa)
-        item.palabras_clave = "[\"Tostadas\", \"Jerez\",  \"Grasa\"]"
+
+        item.palabras_clave = JSON.stringify(item.palabras_clave)
 
         console.log('updateItem', id, item);
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.put('actualizar_negocio', item)
                 .then((response) => {
+                    this.refresh();
                     resolve(response.json() as Negocio);
                 })
                 .catch((error) => {
@@ -112,6 +115,7 @@ export class NegociosService {
         return new Promise<Negocio>((resolve, reject) => {
             this.baseService.delete('eliminar_negocio', params)
                 .then((response) => {
+                    this.refresh();
                     resolve(response);
                 })
                 .catch((error) => {

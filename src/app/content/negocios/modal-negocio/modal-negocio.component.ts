@@ -36,7 +36,7 @@ export class ModalNegocioComponent implements OnInit {
                   this.getNegocio(data.id)
                 } else {
                   this.isNew = true;
-                  this.form.patchValue(this.negocio)
+                  // this.form.patchValue(this.negocio)
                 }
    }
 
