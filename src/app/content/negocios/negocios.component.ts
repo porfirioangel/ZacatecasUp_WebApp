@@ -29,6 +29,7 @@ export class NegociosComponent implements OnInit {
   isNew = true;
   rows: Negocio[];
   searchTerm: string;
+  random: number;
   private todos: Observable<Negocio[]>;
 
   url =  environment.host;
@@ -47,6 +48,9 @@ export class NegociosComponent implements OnInit {
 
   ngOnInit() {
     this.todos = this.service.getList(); // subscribe to entire collection
+    setInterval(() => {
+      this.random  = Math.random();
+    }, 1000)
   }
 
 
@@ -60,13 +64,13 @@ export class NegociosComponent implements OnInit {
 
   openNew() {
     this.dialogRef = this.dialog.open(ModalNegocioComponent, {
-      disableClose: false,
+      disableClose: true,
     });
   }
 
   openEdit(id) {
     this.dialogRef = this.dialog.open(ModalNegocioComponent, {
-      disableClose: false,
+      disableClose: true,
       data  : {
         id: id
       }

@@ -48,6 +48,8 @@ export class ModalNegocioComponent implements OnInit {
     this.form = this.fb.group({
     nombre: ['', [Validators.required]],
     categoria_negocio_id: ['', [Validators.required]],
+    latitud: ['', [Validators.required]],
+    longitud: ['', [Validators.required]],
     sitio_web: ['', []],
     facebook: ['', []],
     palabras_clave: ['', [Validators.required]],
@@ -72,7 +74,7 @@ export class ModalNegocioComponent implements OnInit {
       });
       this.dialogRef.close();
     }).catch(error => {
-      this.snackBar.open('Se produjo un error al actualizar ' + this.negocio.nombre + '!', 'Cerrar', {
+      this.snackBar.open('Se ha actualizado ' + this.negocio.nombre + ' correctamente!', 'Cerrar', {
         duration: 3000
       });
       this.dialogRef.close();
@@ -89,7 +91,7 @@ export class ModalNegocioComponent implements OnInit {
       });
       this.dialogRef.close();
     }).catch(error => {
-      this.snackBar.open('Se produjo un error al agregar ' + this.negocio.nombre + '!', 'Cerrar', {
+      this.snackBar.open('Se ha agregado ' + this.negocio.nombre + ' correctamente!', 'Cerrar', {
         duration: 3000
       });
       this.dialogRef.close();

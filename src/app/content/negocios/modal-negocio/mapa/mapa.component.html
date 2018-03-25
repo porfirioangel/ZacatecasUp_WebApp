@@ -1,7 +1,9 @@
-<div>
-  <br>
-    <agm-map #agmMap [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
-    <br>
-</div>
+<form [formGroup]="form">
+  <mat-form-field class="input-container">
+    <input matInput placeholder="Latitud" [(ngModel)]="item.latitud"  formControlName="latitud" required>
+  </mat-form-field>
+
+  <mat-form-field class="input-container">
+      <input matInput placeholder="Longitud" [(ngModel)]="item.longitud"  formControlName="longitud" required>
+    </mat-form-field>
+</form>
